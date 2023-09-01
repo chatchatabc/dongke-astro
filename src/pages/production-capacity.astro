@@ -1,44 +1,42 @@
 ---
 import InnerLayout from "@layouts/InnerLayout.astro";
+import { Img } from "astro-imagetools/components";
 ---
 
 <InnerLayout
   bannerSrc="/images/production-capacity.jpeg"
   bannerAlt="Production Capacity"
 >
-  <h1>Product Capacity</h1>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, qu
-  </p>
+  <section class="container">
+    <ul class="space-y-8 py-8">
+      <li class="ml-4 list-disc">
+        <p>
+          Our company covers an area of 9,800m², has modern production
+          facilities, 25 production lines and 650 employees, and can produce 1
+          million products per day.
+        </p>
+      </li>
+
+      <li>
+        <Img
+          src="/images/production-capacity/production-capacity-1.jpeg"
+          alt="Production Capacity"
+        />
+      </li>
+
+      <li class="ml-4 list-disc">
+        <p>
+          We have sufficient inventory to provide customers with convenient and
+          efficient supply services.
+        </p>
+      </li>
+
+      <li>
+        <Img
+          src="/images/production-capacity/production-capacity-2.jpeg"
+          alt="Production Capacity"
+        />
+      </li>
+    </ul>
+  </section>
 </InnerLayout>
