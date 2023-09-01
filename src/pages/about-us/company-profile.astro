@@ -1,0 +1,46 @@
+---
+import AboutUsNavigation from "@components/AboutUsNavigation.astro";
+import InnerLayout from "@layouts/InnerLayout.astro";
+import { Img } from "astro-imagetools/components";
+---
+
+<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="About us">
+  <AboutUsNavigation />
+
+  <section class="container pb-8 space-y-8">
+    <Img
+      src="/images/about-us/company-profile-1.jpeg"
+      alt="Company Profile 1"
+    />
+
+    <h1 class="text-xl">
+      The company has large scale manufacturing capability to make medical face
+      shields.
+    </h1>
+
+    <p>
+      With 650 skilled staff and 25 automatic assembly lines, the daily
+      capability is 1 million pieces of face shields while the company have 2
+      million pieces in stock for urgent orders.
+    </p>
+
+    <p>
+      Using the Heidelberg presses XL7+1 and strictly follow ISO process,the
+      company can guarantee the consistent quality and quick delivery.And the
+      company is a qualified supplier of Top 500 enterprises, such as PHV,
+      Unilever,P&G. And Hongkong government bought million of face shiels from
+      us.
+    </p>
+
+    <p>
+      The D.K anti-fog face shields have passed SGS full test.Millions of face
+      shields were sold and protect the hundreds of thousands of doctors and
+      nurses who work on the front lines around the world.
+    </p>
+
+    <Img
+      src="/images/about-us/company-profile-2.jpeg"
+      alt="Company Profile 2"
+    />
+  </section>
+</InnerLayout>
