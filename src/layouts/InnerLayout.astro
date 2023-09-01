@@ -1,0 +1,21 @@
+---
+import Layout, { type LayoutProps } from "./Layout.astro";
+import { Img } from "astro-imagetools/components";
+
+type Props = {
+  bannerSrc: string;
+  bannerAlt: string;
+} & LayoutProps;
+
+const { bannerSrc, bannerAlt } = Astro.props as Props;
+---
+
+<Layout>
+  <!-- Content banner -->
+  <section>
+    <Img src={bannerSrc} alt={bannerAlt} />
+  </section>
+
+  <!-- More Content -->
+  <slot />
+</Layout>

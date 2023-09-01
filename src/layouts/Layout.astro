@@ -3,9 +3,9 @@ import Header from "@components/header/Header.astro";
 import HeaderBanner from "@components/header/HeaderBanner.astro";
 import HeaderNavigation from "@components/header/HeaderNavigation.astro";
 
-interface Props {
+export type LayoutProps = {
   title?: string;
-}
+};
 
 const { title = "Dongke" } = Astro.props;
 ---
