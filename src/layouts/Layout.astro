@@ -1,39 +1,114 @@
---- 
+---
+import { Img } from "astro-imagetools/components";
+import XmlIcon from "@assets/XmlIcon.astro";
+import SitemapIcon from "@assets/SitemapIcon.astro";
+import RssIcon from "@assets/RssIcon.astro";
+import WriteIcon from "@assets/WriteIcon.astro";
+
 interface Props {
-	title: string;
+  title?: string;
 }
 
-const { title } = Astro.props;
+const { title = "Dongke" } = Astro.props;
+
+const languages = [
+  {
+    name: "中文版",
+    flag: "/images/flags/chinese.webp",
+    url: "/zh",
+  },
+  {
+    name: "English",
+    flag: "/images/flags/english.png",
+    url: "/en",
+  },
+];
+
+const links = [
+  {
+    name: "XML",
+    Icon: XmlIcon,
+    url: "/sitemap.xml",
+  },
+  {
+    name: "Sitemap",
+    Icon: SitemapIcon,
+    url: "/sitemap.xml",
+  },
+  {
+    name: "RSS",
+    Icon: RssIcon,
+    url: "/rss.xml",
+  },
+  {
+    name: "Leave a message",
+    Icon: WriteIcon,
+    url: "/message",
+  },
+];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Top small section -->
+    <section class="bg-[#333] text-white py-2 text-sm">
+      <div class="container flex justify-between items-center">
+        <!-- Left -->
+        <p>Welcome to Dongke (Shenzhen) Industrial Development Co.,Ltd.</p>
+
+        <!-- Right -->
+        <div class="flex space-x-4">
+          <!-- Links -->
+          <ul class="flex space-x-2">
+            {
+              links.map((link) => {
+                const { Icon, name, url } = link;
+                return (
+                  <li>
+                    <a href={url} class="space-x-1 flex items-center">
+                      <div class="h-4 w-4">{<Icon />}</div>
+
+                      <p>{name}</p>
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+
+          <!-- Languages -->
+          <ul class="flex space-x-2">
+            {
+              languages.map(({ name, flag, url }) => (
+                <li>
+                  <a href={url} class="flex space-x-1 items-center">
+                    <div class="w-8">
+                      <Img breakpoints={[50]} src={flag} alt={`${name} Flag`} />
+                    </div>
+
+                    <p>{name}</p>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <header></header>
+
+    <section></section>
+
+    <slot />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151A;
-		background-size: 224px;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
