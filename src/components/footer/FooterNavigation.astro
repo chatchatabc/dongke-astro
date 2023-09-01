@@ -1,0 +1,22 @@
+---
+import navlinksJson from "@data/navlinks.json";
+
+const navlinks = navlinksJson.contents;
+---
+
+<section class="container">
+  <nav class="border-b p-5 border-gray-500">
+    <ul class="flex justify-evenly text-white">
+      {
+        navlinks.map((navlink) => {
+          const { name, url } = navlink;
+          return (
+            <li>
+              <a href={url}>{name}</a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</section>

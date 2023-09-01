@@ -1,4 +1,6 @@
 ---
+import FooterBottom from "@components/footer/FooterBottom.astro";
+import FooterNavigation from "@components/footer/FooterNavigation.astro";
 import Header from "@components/header/Header.astro";
 import HeaderBanner from "@components/header/HeaderBanner.astro";
 import HeaderNavigation from "@components/header/HeaderNavigation.astro";
@@ -45,5 +47,10 @@ const { title = "Dongke" } = Astro.props;
     <main>
       <slot />
     </main>
+
+    <footer class="bg-[#333]">
+      <FooterNavigation />
+      <FooterBottom />
+    </footer>
   </body>
 </html>
