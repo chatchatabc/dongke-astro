@@ -1,52 +1,13 @@
 ---
-import { Img } from "astro-imagetools/components";
-import XmlIcon from "@assets/XmlIcon.astro";
-import SitemapIcon from "@assets/SitemapIcon.astro";
-import RssIcon from "@assets/RssIcon.astro";
-import WriteIcon from "@assets/WriteIcon.astro";
-import MailboxIcon from "@assets/MailboxIcon.astro";
+import Header from "@components/header/Header.astro";
+import HeaderBanner from "@components/header/HeaderBanner.astro";
+import HeaderNavigation from "@components/header/HeaderNavigation.astro";
 
 interface Props {
   title?: string;
 }
 
 const { title = "Dongke" } = Astro.props;
-
-const languages = [
-  {
-    name: "中文版",
-    flag: "/images/flags/chinese.webp",
-    url: "/zh",
-  },
-  {
-    name: "English",
-    flag: "/images/flags/english.png",
-    url: "/en",
-  },
-];
-
-const links = [
-  {
-    name: "XML",
-    Icon: XmlIcon,
-    url: "/sitemap.xml",
-  },
-  {
-    name: "Sitemap",
-    Icon: SitemapIcon,
-    url: "/sitemap.xml",
-  },
-  {
-    name: "RSS",
-    Icon: RssIcon,
-    url: "/rss.xml",
-  },
-  {
-    name: "Leave a message",
-    Icon: WriteIcon,
-    url: "/message",
-  },
-];
 ---
 
 <!doctype html>
@@ -77,75 +38,12 @@ const links = [
     <title>{title}</title>
   </head>
   <body>
-    <!-- Top small section -->
-    <section class="bg-[#333] text-white py-2 text-sm">
-      <div class="container flex justify-between items-center">
-        <!-- Left -->
-        <p>Welcome to Dongke (Shenzhen) Industrial Development Co.,Ltd.</p>
+    <HeaderBanner />
+    <Header />
+    <HeaderNavigation />
 
-        <!-- Right -->
-        <div class="flex space-x-4">
-          <!-- Links -->
-          <ul class="flex space-x-2">
-            {
-              links.map((link) => {
-                const { Icon, name, url } = link;
-                return (
-                  <li>
-                    <a href={url} class="space-x-1 flex items-center">
-                      <div class="h-4 w-4">{<Icon />}</div>
-
-                      <p>{name}</p>
-                    </a>
-                  </li>
-                );
-              })
-            }
-          </ul>
-
-          <!-- Languages -->
-          <ul class="flex space-x-2">
-            {
-              languages.map(({ name, flag, url }) => (
-                <li>
-                  <a href={url} class="flex space-x-1 items-center">
-                    <div class="w-8">
-                      <Img breakpoints={[50]} src={flag} alt={`${name} Flag`} />
-                    </div>
-
-                    <p>{name}</p>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <header class="text-xl border-b border-dashed">
-      <section class="container py-4 flex items-center justify-between">
-        <!-- left -->
-        <div class="flex">
-          <h1 class="text-p flex items-center font-bold">
-            <span class="text-8xl">D.K.</span> Dongke (Shenzhen) Industrial
-            Development Co.,Ltd.
-          </h1>
-        </div>
-
-        <!-- Right -->
-        <div class="flex items-center space-x-2">
-          <div class="w-12 h-12 text-p">
-            <MailboxIcon />
-          </div>
-
-          <p>E-mail:sales9@chinapacking.biz</p>
-        </div>
-      </section>
-    </header>
-
-    <section class="border-t"></section>
-
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

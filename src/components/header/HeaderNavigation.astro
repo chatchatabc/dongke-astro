@@ -1,0 +1,58 @@
+---
+const { pathname } = Astro.url;
+
+const navLinks = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "About us",
+    url: "/about-us",
+  },
+  {
+    name: "Products",
+    url: "/products",
+  },
+  {
+    name: "Production capacity",
+    url: "/production-capacity",
+  },
+  {
+    name: "News",
+    url: "/news",
+  },
+  {
+    name: "Investment promotion",
+    url: "/investment-promotion",
+  },
+  {
+    name: "Contact us",
+    url: "/contact-us",
+  },
+];
+---
+
+<section class="sticky top-0 border-y py-2 bg-white shadow">
+  <nav class="container">
+    <ul class="flex justify-center space-x-1">
+      {
+        navLinks.map((navLink) => {
+          const { name, url } = navLink;
+          return (
+            <li>
+              <a
+                href={url}
+                class={`block px-8 py-2 rounded-full transition ${
+                  url === pathname ? "bg-p text-white" : ""
+                } hover:text-white hover:bg-p`}
+              >
+                {name}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</section>
