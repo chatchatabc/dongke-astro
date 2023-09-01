@@ -1,0 +1,56 @@
+---
+const navlinks = [
+  {
+    name: "Company Profile",
+    href: "/about-us/company-profile",
+  },
+  {
+    name: "Production Workshop",
+    href: "/about-us/production-workshop",
+  },
+  {
+    name: "Advanced Equipment",
+    href: "/about-us/advanced-equipment",
+  },
+  {
+    name: "Certificate",
+    href: "/about-us/certificate",
+  },
+  {
+    name: "Company History",
+    href: "/about-us/company-history",
+  },
+  {
+    name: "Anti-Modern Slavery and Anti-population Propaganda Statement",
+    href: "/about-us/anti-modern-slavery-and-anti-population-propaganda-statement",
+  },
+];
+
+const { pathname } = Astro.url;
+---
+
+<section class="container mt-8">
+  <nav class="border-b">
+    <ul class="flex flex-wrap space-x-4 px-16 justify-center">
+      {
+        navlinks.map((navlink) => {
+          const { name, href } = navlink;
+          return (
+            <li>
+              <a
+                href={href}
+                class={`block px-4 py-2 border transition ${
+                  pathname.includes(href)
+                    ? "bg-p text-white border-p"
+                    : "bg-gray-50"
+                } hover:border-p hover:bg-p hover:text-white`}
+              >
+                {name}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</section>
