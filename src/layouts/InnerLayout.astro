@@ -1,6 +1,8 @@
 ---
+import HomeIcon from "@assets/HomeIcon.astro";
 import Layout, { type LayoutProps } from "./Layout.astro";
 import { Img } from "astro-imagetools/components";
+import { utilFixPathname, utilSlugToTitle } from "@services/utilService";
 
 type Props = {
   bannerSrc: string;
@@ -8,12 +10,57 @@ type Props = {
 } & LayoutProps;
 
 const { bannerSrc, bannerAlt } = Astro.props as Props;
+const { pathname } = Astro.url;
+
+const path = utilFixPathname(pathname);
+const pathsSplitted = path.split("/");
+const crumbs = pathsSplitted.map((name, index) => {
+  const href = pathsSplitted.slice(0, index + 1).join("/");
+  return {
+    name: name || "Home",
+    href: href || "/",
+  };
+});
 ---
 
 <Layout>
   <!-- Content banner -->
   <section>
     <Img src={bannerSrc} alt={bannerAlt} />
+  </section>
+
+  <!-- Breadcrumbs -->
+  <section class="shadow-lg">
+    <section class="container flex py-2 items-center">
+      <div class="w-5 h-5 mr-2 text-gray-500">
+        <HomeIcon />
+      </div>
+
+      <h2 class="text-2xl uppercase mr-auto">
+        {bannerAlt}
+      </h2>
+
+      <div class="flex items-center text-sm text-gray-500">
+        <p>You are here:</p>
+
+        <nav>
+          <ul class="flex">
+            {
+              crumbs.map((crumb, index) => {
+                return (
+                  <li>
+                    <a class="mx-1 hover:text-gray-700" href={crumb.href}>
+                      {utilSlugToTitle(crumb.name)}
+                    </a>
+                    {index < crumbs.length - 1 && <span>&gt;&gt;</span>}
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+      </div>
+    </section>
   </section>
 
   <!-- More Content -->
