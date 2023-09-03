@@ -4,6 +4,7 @@ import FooterNavigation from "@components/footer/FooterNavigation.astro";
 import Header from "@components/header/Header.astro";
 import HeaderBanner from "@components/header/HeaderBanner.astro";
 import HeaderNavigation from "@components/header/HeaderNavigation.astro";
+import { ViewTransitions } from "astro:transitions";
 
 export type LayoutProps = {
   title?: string;
@@ -38,6 +39,7 @@ const { title = "Dongke" } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <HeaderBanner />
