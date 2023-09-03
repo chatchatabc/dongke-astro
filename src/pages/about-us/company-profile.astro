@@ -1,17 +1,19 @@
 ---
 import AboutUsNavigation from "@components/AboutUsNavigation.astro";
 import InnerLayout from "@layouts/InnerLayout.astro";
-import { Img } from "astro-imagetools/components";
+import { Image } from "astro:assets";
+
+// Images
+import bannerImg from "@assets/images/about-us.jpeg";
+import srcImg1 from "@assets/images/about-us/company-profile-1.jpeg";
+import srcImg2 from "@assets/images/about-us/company-profile-2.jpeg";
 ---
 
-<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="About us">
+<InnerLayout bannerImg={bannerImg} bannerAlt="About us">
   <AboutUsNavigation />
 
   <section class="container pb-8 space-y-8">
-    <Img
-      src="/images/about-us/company-profile-1.jpeg"
-      alt="Company Profile 1"
-    />
+    <Image src={srcImg1} alt="Company Profile 1" />
 
     <h1 class="text-xl">
       The company has large scale manufacturing capability to make medical face
@@ -38,9 +40,6 @@ import { Img } from "astro-imagetools/components";
       nurses who work on the front lines around the world.
     </p>
 
-    <Img
-      src="/images/about-us/company-profile-2.jpeg"
-      alt="Company Profile 2"
-    />
+    <Image src={srcImg2} alt="Company Profile 2" />
   </section>
 </InnerLayout>

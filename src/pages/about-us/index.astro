@@ -1,9 +1,12 @@
 ---
 import AboutUsNavigation from "@components/AboutUsNavigation.astro";
 import InnerLayout from "@layouts/InnerLayout.astro";
+
+// images
+import bannerImg from "@assets/images/about-us.jpeg";
 ---
 
-<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="About us">
+<InnerLayout bannerImg={bannerImg} bannerAlt="About us">
   <AboutUsNavigation />
 
   <div class="mb-8"></div>

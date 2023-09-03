@@ -1,15 +1,15 @@
 ---
 import HomeIcon from "@assets/HomeIcon.astro";
 import Layout, { type LayoutProps } from "./Layout.astro";
-import { Img } from "astro-imagetools/components";
+import { Image } from "astro:assets";
 import { utilFixPathname, utilSlugToTitle } from "@services/utilService";
 
 type Props = {
-  bannerSrc: string;
+  bannerImg: ImageMetadata;
   bannerAlt: string;
 } & LayoutProps;
 
-const { bannerSrc, bannerAlt } = Astro.props as Props;
+const { bannerImg, bannerAlt } = Astro.props as Props;
 const { pathname } = Astro.url;
 
 const path = utilFixPathname(pathname);
@@ -26,7 +26,7 @@ const crumbs = pathsSplitted.map((name, index) => {
 <Layout>
   <!-- Content banner -->
   <section>
-    <Img src={bannerSrc} alt={bannerAlt} />
+    <Image src={bannerImg} alt={bannerAlt} />
   </section>
 
   <!-- Breadcrumbs -->

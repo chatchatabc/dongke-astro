@@ -1,19 +1,23 @@
 ---
-import { Img } from "astro-imagetools/components";
 import XmlIcon from "@assets/XmlIcon.astro";
 import SitemapIcon from "@assets/SitemapIcon.astro";
 import RssIcon from "@assets/RssIcon.astro";
 import WriteIcon from "@assets/WriteIcon.astro";
+import { Image } from "astro:assets";
+
+// images
+import chineFlagImg from "@assets/images/flags/chinese.webp";
+import englishFlagImg from "@assets/images/flags/english.png";
 
 const languages = [
   {
     name: "中文版",
-    flag: "/images/flags/chinese.webp",
+    flag: chineFlagImg,
     url: "/zh",
   },
   {
     name: "English",
-    flag: "/images/flags/english.png",
+    flag: englishFlagImg,
     url: "/en",
   },
 ];
@@ -74,7 +78,7 @@ const links = [
             <li>
               <a href={url} class="flex space-x-1 items-center">
                 <div class="w-8">
-                  <Img breakpoints={[50]} src={flag} alt={`${name} Flag`} />
+                  <Image src={flag} alt={`${name} Flag`} />
                 </div>
 
                 <p>{name}</p>

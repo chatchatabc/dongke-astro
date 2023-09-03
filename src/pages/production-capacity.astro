@@ -1,12 +1,14 @@
 ---
 import InnerLayout from "@layouts/InnerLayout.astro";
-import { Img } from "astro-imagetools/components";
+import { Image } from "astro:assets";
+
+// images
+import bannerImg from "@assets/images/production-capacity.jpeg";
+import srcImg1 from "@assets/images/production-capacity/production-capacity-1.jpeg";
+import srcImg2 from "@assets/images/production-capacity/production-capacity-2.jpeg";
 ---
 
-<InnerLayout
-  bannerSrc="/images/production-capacity.jpeg"
-  bannerAlt="Production Capacity"
->
+<InnerLayout bannerImg={bannerImg} bannerAlt="Production Capacity">
   <section class="container">
     <ul class="space-y-8 py-8">
       <li class="ml-4 list-disc">
@@ -18,10 +20,7 @@ import { Img } from "astro-imagetools/components";
       </li>
 
       <li>
-        <Img
-          src="/images/production-capacity/production-capacity-1.jpeg"
-          alt="Production Capacity"
-        />
+        <Image src={srcImg1} alt="Production Capacity" />
       </li>
 
       <li class="ml-4 list-disc">
@@ -32,10 +31,7 @@ import { Img } from "astro-imagetools/components";
       </li>
 
       <li>
-        <Img
-          src="/images/production-capacity/production-capacity-2.jpeg"
-          alt="Production Capacity"
-        />
+        <Image src={srcImg2} alt="Production Capacity" />
       </li>
     </ul>
   </section>
