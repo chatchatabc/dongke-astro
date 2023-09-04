@@ -8,36 +8,36 @@ import i18next, { changeLanguage } from "i18next";
 changeLanguage("en");
 
 export async function getStaticPaths() {
-  let newsCollection = await getCollection("news");
-  const newsCollectionTypes = newsCollection.reduce((acc: string[], news) => {
-    if (!acc.includes(news.data.type)) {
-      acc.push(news.data.type);
-    }
-    return acc;
-  }, []);
-  console.log(newsCollectionTypes);
-  return newsCollectionTypes.map((type) => {
-    return {
-      params: {
-        type,
-      },
-    };
-  });
+    let newsCollection = await getCollection("news");
+    const newsCollectionTypes = newsCollection.reduce((acc: string[], news) => {
+        if (!acc.includes(news.data.type)) {
+            acc.push(news.data.type);
+        }
+        return acc;
+    }, []);
+    console.log(newsCollectionTypes);
+    return newsCollectionTypes.map((type) => {
+        return {
+            params: {
+                type,
+            },
+        };
+    });
 }
 const navlinks = [
-  {
-    name: "company-news",
-    pathname: "/news/company-news",
-  },
-  {
-    name: "industry-information",
-    pathname: "/news/industry-information",
-  },
+    {
+        name: "company-news",
+        pathname: "/news/company-news",
+    },
+    {
+        name: "industry-information",
+        pathname: "/news/industry-information",
+    },
 ];
 const { type } = Astro.params;
 let newsCollection = await getCollection("news");
 newsCollection = newsCollection.filter((news) => {
-  return news.data.type === type && news.slug.startsWith(i18next.language);
+    return news.data.type === type && news.slug.startsWith(i18next.language);
 });
 ---
 
@@ -75,7 +75,7 @@ newsCollection = newsCollection.filter((news) => {
                   </header>
 
                   <section>
-                    <p>{summary}</p>
+                    <p class="text-sm text-gray-500">{summary}</p>
                   </section>
 
                   <footer class="flex w-full justify-end">

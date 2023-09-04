@@ -8,18 +8,18 @@ import { utilAddLocalePathname } from "@services/utilService";
 changeLanguage("en");
 
 const navlinks = [
-  {
-    name: "company-news",
-    pathname: "/news/company-news",
-  },
-  {
-    name: "industry-information",
-    pathname: "/news/industry-information",
-  },
+    {
+        name: "company-news",
+        pathname: "/news/company-news",
+    },
+    {
+        name: "industry-information",
+        pathname: "/news/industry-information",
+    },
 ];
 let newsCollection = await getCollection("news");
 newsCollection = newsCollection.filter((news) => {
-  return news.slug.startsWith(i18next.language);
+    return news.slug.startsWith(i18next.language);
 });
 ---
 
@@ -57,7 +57,7 @@ newsCollection = newsCollection.filter((news) => {
                   </header>
 
                   <section>
-                    <p>{summary}</p>
+                    <p class="text-sm text-gray-500">{summary}</p>
                   </section>
 
                   <footer class="flex w-full justify-end">

@@ -45,6 +45,7 @@ newsCollection = newsCollection.filter((news) => {
   navlinks={navlinks}
   bannerSrc="/images/news.jpeg"
   bannerAlt="news"
+  subtitle={type}
 >
   <section>
     <ul class="py-2 divide-y divide-dashed">
@@ -74,7 +75,7 @@ newsCollection = newsCollection.filter((news) => {
                   </header>
 
                   <section>
-                    <p>{summary}</p>
+                    <p class="text-sm text-gray-500">{summary}</p>
                   </section>
 
                   <footer class="flex w-full justify-end">
