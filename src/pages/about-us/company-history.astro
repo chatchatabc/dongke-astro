@@ -1,0 +1,41 @@
+---
+import { changeLanguage } from "i18next";
+import AboutUsNavigation from "@components/AboutUsNavigation.astro";
+import InnerLayout from "@layouts/InnerLayout.astro";
+import { Img } from "astro-imagetools/components";
+
+changeLanguage("en");
+---
+
+<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
+  <AboutUsNavigation />
+
+  <section class="container pb-8 space-y-8">
+    <Img
+      src="/images/about-us/company-history.jpeg"
+      alt="Production Workshop"
+    />
+
+    <p>
+      历史: 公司成立于2000年，现有设备:丝印3台，啤酒机1台，烘箱1台，贴片机1台;
+    </p>
+
+    <p>2003年新增半自动丝印机4台，啤酒机1台;</p>
+
+    <p>2005年新增超声波6台，缝纫机8台，啤酒机2台</p>
+
+    <p>
+      2008年公司规模扩大，拥有厂房1栋;自主研发PP储存系列产品，拥有四项实用专利证书。
+    </p>
+
+    <p>
+      2011年新增自动丝印机2台;我们发行了有一定市场份额的吊牌，并与一些知名品牌合作;
+    </p>
+
+    <p>2015年，公司引进全自动胶盒机2台进行更换;</p>
+
+    <p>2017年，公司推出全新海德堡UV7+1印刷机，全自动啤酒机</p>
+
+    <p>2019年，因发展需要，公司开始转型，主要生产个人安全防护产品。</p>
+  </section>
+</InnerLayout>
