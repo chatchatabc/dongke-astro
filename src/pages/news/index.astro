@@ -8,23 +8,24 @@ import { utilAddLocalePathname } from "@services/utilService";
 changeLanguage("en");
 
 const navlinks = [
-    {
-        name: "company-news",
-        pathname: "/news/company-news",
-    },
-    {
-        name: "industry-information",
-        pathname: "/news/industry-information",
-    },
+  {
+    name: "company-news",
+    pathname: "/news/company-news",
+  },
+  {
+    name: "industry-information",
+    pathname: "/news/industry-information",
+  },
 ];
 let newsCollection = await getCollection("news");
 newsCollection = newsCollection.filter((news) => {
-    return news.slug.startsWith(i18next.language);
+  return news.slug.startsWith(i18next.language);
 });
 ---
 
 <InnerSideLayout
   navlinks={navlinks}
+  subtitle="news"
   bannerSrc="/images/news.jpeg"
   bannerAlt="news"
 >
