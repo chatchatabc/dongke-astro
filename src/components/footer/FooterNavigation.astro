@@ -1,5 +1,6 @@
 ---
 import navlinksJson from "@data/navlinks.json";
+import { t } from "i18next";
 
 const navlinks = navlinksJson.contents;
 ---
@@ -9,10 +10,10 @@ const navlinks = navlinksJson.contents;
     <ul class="flex justify-evenly text-white">
       {
         navlinks.map((navlink) => {
-          const { name, url } = navlink;
+          const { name, pathname } = navlink;
           return (
             <li>
-              <a href={url}>{name}</a>
+              <a href={pathname}>{t(name)}</a>
             </li>
           );
         })
