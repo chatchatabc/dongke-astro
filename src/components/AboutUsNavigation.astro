@@ -1,32 +1,36 @@
 ---
+import { t } from "i18next";
+import { utilAddLocalePathname } from "@services/utilService";
+
 const navlinks = [
   {
-    name: "Company Profile",
-    href: "/about-us/company-profile",
+    name: "company-profile",
+    pathname: "/about-us/company-profile",
   },
   {
-    name: "Production Workshop",
-    href: "/about-us/production-workshop",
+    name: "production-workshop",
+    pathname: "/about-us/production-workshop",
   },
   {
-    name: "Advanced Equipment",
-    href: "/about-us/advanced-equipment",
+    name: "advanced-equipment",
+    pathname: "/about-us/advanced-equipment",
   },
   {
-    name: "Certificate",
-    href: "/about-us/certificate",
+    name: "certificate",
+    pathname: "/about-us/certificate",
   },
   {
-    name: "Company History",
-    href: "/about-us/company-history",
+    name: "company-history",
+    pathname: "/about-us/company-history",
   },
   {
-    name: "Anti-Modern Slavery and Anti-population Propaganda Statement",
-    href: "/about-us/anti-modern-slavery-and-anti-population-propaganda-statement",
+    name: "anti-modern-slavery-and-anti-population-propaganda-statement",
+    pathname:
+      "/about-us/anti-modern-slavery-and-anti-population-propaganda-statement",
   },
 ];
 
-const { pathname } = Astro.url;
+const { pathname: astroPathname } = Astro.url;
 ---
 
 <section class="container mt-8">
@@ -34,18 +38,18 @@ const { pathname } = Astro.url;
     <ul class="flex flex-wrap space-x-4 px-16 justify-center">
       {
         navlinks.map((navlink) => {
-          const { name, href } = navlink;
+          const { name, pathname } = navlink;
           return (
             <li>
               <a
-                href={href}
+                href={utilAddLocalePathname({ pathname })}
                 class={`block px-4 py-2 border transition ${
-                  pathname.includes(href)
+                  astroPathname.includes(pathname)
                     ? "bg-p text-white border-p"
                     : "bg-gray-50"
                 } hover:border-p hover:bg-p hover:text-white`}
               >
-                {name}
+                {t(name)}
               </a>
             </li>
           );
