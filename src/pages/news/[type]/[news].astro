@@ -11,6 +11,7 @@ export async function getStaticPaths() {
         const pathname = news.slug.slice(3);
         return {
             params: {
+                type: news.data.type,
                 news: pathname,
             },
         };

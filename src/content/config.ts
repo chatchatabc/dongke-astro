@@ -7,6 +7,7 @@ const newsCollection = defineCollection({
     timestamp: z.number(),
     summary: z.string().optional(),
     image: z.string(),
+    type: z.string(),
   }),
 });
 

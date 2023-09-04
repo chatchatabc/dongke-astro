@@ -33,8 +33,8 @@ newsCollection = newsCollection.filter((news) => {
       {
         newsCollection.map((news) => {
           const { data, slug } = news;
-          const { image, title, summary } = data;
-          const pathname = `/news/${slug.slice(3)}`;
+          const { image, title, summary, type } = data;
+          const pathname = `/news/${type ? `${type}/` : ""}${slug.slice(3)}`;
 
           return (
             <li class="py-2">
