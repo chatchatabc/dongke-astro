@@ -3,9 +3,11 @@ import InnerLayout from "./InnerLayout.astro";
 import type { LayoutProps } from "./Layout.astro";
 import { Img } from "astro-imagetools/components";
 import contactUsJson from "@data/contact-us.json";
+import { t } from "i18next";
+import { utilAddLocalePathname } from "@services/utilService";
 
 type Props = {
-  navlinks: { name: string; href: string }[];
+  navlinks: { name: string; pathname: string }[];
   bannerSrc: string;
   bannerAlt: string;
 } & LayoutProps;
@@ -19,21 +21,21 @@ const props = Astro.props as Props;
       <!-- Navigation -->
       <section class="rounded-t-sm overflow-hidden">
         <header class="bg-p py-2 px-4 text-white text-lg capitalize">
-          <h3>{props.bannerAlt}</h3>
+          <h3>{t(props.bannerAlt)}</h3>
         </header>
 
         <nav class="border">
           <ul class="divide-y divide-gray-300">
             {
               props.navlinks.map((navlink) => {
-                const { name, href } = navlink;
+                const { name, pathname } = navlink;
                 return (
                   <li>
                     <a
-                      href={href}
+                      href={utilAddLocalePathname({ pathname })}
                       class="bg-gray-100 block px-4 py-2 transition hover:bg-white hover:text-p"
                     >
-                      {name}
+                      {t(name)}
                     </a>
                   </li>
                 );
@@ -46,7 +48,7 @@ const props = Astro.props as Props;
       <!-- Contact Us -->
       <section class="rounded-t-sm overflow-hidden">
         <header class="bg-p py-2 px-4 text-white text-lg">
-          <h3>Contact us</h3>
+          <h3>{t("contact-us")}</h3>
         </header>
 
         <section class="border py-2 px-3 text-sm">
@@ -74,7 +76,7 @@ const props = Astro.props as Props;
 
     <section class="flex-1 px-4">
       <header class="border-b pb-2">
-        <h2 class="capitalize text-2xl">{props.bannerAlt}</h2>
+        <h2 class="capitalize text-2xl">{t(props.bannerAlt)}</h2>
       </header>
 
       <section>
