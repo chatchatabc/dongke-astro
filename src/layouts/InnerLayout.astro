@@ -56,17 +56,21 @@ const crumbs = pathsSplitted.map((slug, index) => {
             {
               crumbs.map((crumb, index) => {
                 const { slug, pathname } = crumb;
-                return (
-                  <li>
-                    <a
-                      class="mx-1 hover:text-gray-700"
-                      href={utilAddLocalePathname({ pathname })}
-                    >
-                      {t(slug)}
-                    </a>
-                    {index < crumbs.length - 1 && <span>&gt;&gt;</span>}
-                  </li>
-                );
+                const translated = t([slug, ""]);
+
+                if (translated) {
+                  return (
+                    <li>
+                      {index > 0 && <span>&gt;&gt;</span>}
+                      <a
+                        class="mx-1 hover:text-gray-700"
+                        href={utilAddLocalePathname({ pathname })}
+                      >
+                        {t(slug)}
+                      </a>
+                    </li>
+                  );
+                }
               })
             }
           </ul>
