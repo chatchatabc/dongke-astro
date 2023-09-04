@@ -62,7 +62,7 @@ const crumbs = pathsSplitted.map((slug, index) => {
                       class="mx-1 hover:text-gray-700"
                       href={utilAddLocalePathname({ pathname })}
                     >
-                      {t(utilConvertSlugToCamelCase({ slug }))}
+                      {t(slug)}
                     </a>
                     {index < crumbs.length - 1 && <span>&gt;&gt;</span>}
                   </li>

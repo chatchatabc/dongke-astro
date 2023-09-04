@@ -5,7 +5,7 @@
       "pathname": "/"
     },
     {
-      "name": "aboutUs",
+      "name": "about-us",
       "pathname": "/about-us"
     },
     {
@@ -13,7 +13,7 @@
       "pathname": "/products"
     },
     {
-      "name": "productionCapacity",
+      "name": "production-capacity",
       "pathname": "/production-capacity"
     },
     {
@@ -21,11 +21,11 @@
       "pathname": "/news"
     },
     {
-      "name": "investmentPromotion",
+      "name": "investment-promotion",
       "pathname": "/investment-promotion"
     },
     {
-      "name": "contactUs",
+      "name": "contact-us",
       "pathname": "/contact-us"
     }
   ]

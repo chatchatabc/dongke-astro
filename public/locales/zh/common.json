@@ -1,9 +1,9 @@
 {
-  "aboutUs": "关于我们",
-  "contactUs": "联系我们",
+  "about-us": "关于我们",
+  "contact-us": "联系我们",
   "home": "家",
-  "investmentPromotion": "招商引资",
+  "investment-promotion": "招商引资",
   "news": "新闻",
   "products": "产品",
-  "productionCapacity": "产能"
+  "production-capacity": "产能"
 }
