@@ -2,7 +2,13 @@
 import HomeIcon from "@assets/HomeIcon.astro";
 import Layout, { type LayoutProps } from "./Layout.astro";
 import { Img } from "astro-imagetools/components";
-import { utilFixPathname, utilSlugToTitle } from "@services/utilService";
+import {
+  utilFixPathname,
+  utilRemoveLocalePathname,
+  utilConvertSlugToCamelCase,
+  utilAddLocalePathname,
+} from "@services/utilService";
+import { t } from "i18next";
 
 type Props = {
   bannerSrc: string;
@@ -10,15 +16,17 @@ type Props = {
 } & LayoutProps;
 
 const { bannerSrc, bannerAlt } = Astro.props as Props;
-const { pathname } = Astro.url;
+const { pathname: astroPathname } = Astro.url;
 
-const path = utilFixPathname(pathname);
+const path = utilFixPathname(
+  utilRemoveLocalePathname({ pathname: astroPathname })
+);
 const pathsSplitted = path.split("/");
-const crumbs = pathsSplitted.map((name, index) => {
-  const href = pathsSplitted.slice(0, index + 1).join("/");
+const crumbs = pathsSplitted.map((slug, index) => {
+  const pathname = pathsSplitted.slice(0, index + 1).join("/");
   return {
-    name: name || "Home",
-    href: href || "/",
+    slug: slug || "home",
+    pathname: pathname || "/",
   };
 });
 ---
@@ -47,10 +55,14 @@ const crumbs = pathsSplitted.map((name, index) => {
           <ul class="flex">
             {
               crumbs.map((crumb, index) => {
+                const { slug, pathname } = crumb;
                 return (
                   <li>
-                    <a class="mx-1 hover:text-gray-700" href={crumb.href}>
-                      {utilSlugToTitle(crumb.name)}
+                    <a
+                      class="mx-1 hover:text-gray-700"
+                      href={utilAddLocalePathname({ pathname })}
+                    >
+                      {t(utilConvertSlugToCamelCase({ slug }))}
                     </a>
                     {index < crumbs.length - 1 && <span>&gt;&gt;</span>}
                   </li>
