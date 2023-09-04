@@ -1,0 +1,82 @@
+---
+import { changeLanguage } from "i18next";
+import AboutUsNavigation from "@components/AboutUsNavigation.astro";
+import InnerLayout from "@layouts/InnerLayout.astro";
+
+changeLanguage("zh");
+---
+
+<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
+  <AboutUsNavigation />
+
+  <section class="container pb-8 text-gray-500 space-y-24">
+    <header class="pt-4">
+      <h3 class="text-lg font-bold text-center">
+        Dongke (Shenzhen) Industrial Development Co., Ltd. Anti-Modern Slavery
+        and Anti-population Propaganda Statement
+      </h3>
+    </header>
+
+    <section class="space-y-8">
+      <p>
+        Dongke Company observe the Ethical Trading Initiative (ETI) Base Code
+        which is an internationally recognised set of labour standards based on
+        ILO conventions. and We declare that Dongke company implements it to
+        ensure that there is no modern slavery or human trafficking within the
+        organization or within the business supply chain
+      </p>
+
+      <p>
+        Dongke Company is committed to abide by the principles of good corporate
+        citizenship and the highest ethical standards. Dongke Company is a
+        professional PPE manufacturer, committed to designing, producing and
+        selling PPE to ensure safer production and life for people in various
+        regions, and ultimately improve the quality of life of humans around the
+        world. Due to the technical and professional nature of our business, we
+        believe that Dongke’s risk of engaging in modern slavery and human
+        trafficking is extremely low. Moreover, we have not heard or noticed any
+        cases of forced labor. We are well aware of the complexity of modern
+        population slavery, so we will make more efforts to ensure compliance
+        with the requirements of the Act.
+      </p>
+
+      <p>
+        Dongke‘s industry standards and employee manuals are the behavioral
+        guidance to ensure that Dongke conducts its business with the highest
+        ethical standards and integrity under the premise of complying with
+        applicable laws and regulations.
+      </p>
+
+      <p>
+        This statement is intended to declare to Dongke’s employees,
+        contractors, suppliers, providers and other partners that have business
+        dealings with Dongke that Dongke will never allow any business
+        activities that constitute human trafficking or slavery. We are
+        committed to implementing a zero tolerance policy for human trafficking
+        and slavery in our supply chain. Dongke has carried out compliance
+        training for the affected departments and has communicated this
+        statement to the supplier community.
+      </p>
+
+      <p>
+        Any actual or suspicious violations should be reported to the Dongke
+        Supervision Committee immediately.
+      </p>
+
+      <p>
+        We will continue to update this statement as necessary to improve our
+        compliance procedure
+      </p>
+    </section>
+
+    <footer>
+      <header>
+        <h4>General manager</h4>
+      </header>
+
+      <section>
+        <p>Liao chenggui</p>
+      </section>
+    </footer>
+  </section>
+</InnerLayout>
