@@ -1,0 +1,69 @@
+---
+import { changeLanguage } from "i18next";
+import AboutUsNavigation from "@components/AboutUsNavigation.astro";
+import InnerLayout from "@layouts/InnerLayout.astro";
+import { Img } from "astro-imagetools/components";
+
+changeLanguage("zh");
+
+const images = [
+    {
+        name: "01",
+        src: "/images/about-us/certificates/01.jpg",
+    },
+    {
+        name: "02",
+        src: "/images/about-us/certificates/02.jpg",
+    },
+    {
+        name: "03",
+        src: "/images/about-us/certificates/03.jpg",
+    },
+    {
+        name: "04",
+        src: "/images/about-us/certificates/04.jpg",
+    },
+    {
+        name: "05",
+        src: "/images/about-us/certificates/05.jpeg",
+    },
+    {
+        name: "06",
+        src: "/images/about-us/certificates/06.jpeg",
+    },
+    {
+        name: "07",
+        src: "/images/about-us/certificates/07.jpeg",
+    },
+];
+---
+
+<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
+  <AboutUsNavigation />
+
+  <section class="container pb-8">
+    <ul class="flex flex-wrap -mx-4 overflow-hidden">
+      {
+        images.map((image) => {
+          const { src, name } = image;
+
+          return (
+            <li class="w-1/4 p-4">
+              <figure>
+                <div>
+                  <Img src={src} alt={name} />
+                </div>
+
+                <figcaption>
+                  <header>
+                    <h3 class="text-center">{name}</h3>
+                  </header>
+                </figcaption>
+              </figure>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</InnerLayout>
