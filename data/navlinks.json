@@ -2,31 +2,31 @@
   "contents": [
     {
       "name": "home",
-      "href": "/"
+      "pathname": "/"
     },
     {
       "name": "aboutUs",
-      "href": "/about-us"
+      "pathname": "/about-us"
     },
     {
       "name": "products",
-      "href": "/products"
+      "pathname": "/products"
     },
     {
       "name": "productionCapacity",
-      "href": "/production-capacity"
+      "pathname": "/production-capacity"
     },
     {
       "name": "news",
-      "href": "/news"
+      "pathname": "/news"
     },
     {
       "name": "investmentPromotion",
-      "href": "/investment-promotion"
+      "pathname": "/investment-promotion"
     },
     {
       "name": "contactUs",
-      "href": "/contact-us"
+      "pathname": "/contact-us"
     }
   ]
 }

@@ -2,8 +2,9 @@
 import HomeIcon from "@assets/HomeIcon.astro";
 import navlinksJson from "@data/navlinks.json";
 import { t } from "i18next";
+import { utilAddLocalePathname } from "@services/utilService";
 
-const { pathname } = Astro.url;
+const { pathname: astroPathname } = Astro.url;
 
 const navLinks = navlinksJson.contents;
 ---
@@ -13,19 +14,19 @@ const navLinks = navlinksJson.contents;
     <ul class="flex justify-center space-x-1">
       {
         navLinks.map((navLink) => {
-          const { name, href } = navLink;
+          const { name, pathname } = navLink;
           return (
             <li>
               <a
-                href={href}
+                href={utilAddLocalePathname({ pathname })}
                 class={`flex items-center px-8 py-2 rounded-full transition ${
-                  (pathname.startsWith(href) && href !== "/") ||
-                  pathname === href
+                  (astroPathname.startsWith(pathname) && pathname !== "/") ||
+                  astroPathname === pathname
                     ? "bg-p text-white"
                     : ""
                 } hover:text-white hover:bg-p`}
               >
-                {href === "/" && (
+                {pathname === "/" && (
                   <div class="w-5 h-5 mr-2">
                     <HomeIcon />
                   </div>
