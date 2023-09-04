@@ -1,5 +1,6 @@
 ---
 import navlinksJson from "@data/navlinks.json";
+import { utilAddLocalePathname } from "@services/utilService";
 import { t } from "i18next";
 
 const navlinks = navlinksJson.contents;
@@ -13,7 +14,7 @@ const navlinks = navlinksJson.contents;
           const { name, pathname } = navlink;
           return (
             <li>
-              <a href={pathname}>{t(name)}</a>
+              <a href={utilAddLocalePathname({ pathname })}>{t(name)}</a>
             </li>
           );
         })
