@@ -1,32 +1,32 @@
 {
   "contents": [
     {
-      "name": "Home",
-      "url": "/"
+      "name": "home",
+      "href": "/"
     },
     {
-      "name": "About us",
-      "url": "/about-us"
+      "name": "aboutUs",
+      "href": "/about-us"
     },
     {
-      "name": "Products",
-      "url": "/products"
+      "name": "products",
+      "href": "/products"
     },
     {
-      "name": "Production capacity",
-      "url": "/production-capacity"
+      "name": "productionCapacity",
+      "href": "/production-capacity"
     },
     {
-      "name": "News",
-      "url": "/news"
+      "name": "news",
+      "href": "/news"
     },
     {
-      "name": "Investment promotion",
-      "url": "/investment-promotion"
+      "name": "investmentPromotion",
+      "href": "/investment-promotion"
     },
     {
-      "name": "Contact us",
-      "url": "/contact-us"
+      "name": "contactUs",
+      "href": "/contact-us"
     }
   ]
 }

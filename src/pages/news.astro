@@ -1,15 +1,18 @@
 ---
+import { changeLanguage } from "i18next";
 import InnerSideLayout from "@layouts/InnerSideLayout.astro";
 
+changeLanguage("en");
+
 const navlinks = [
-  {
-    name: "Company News",
-    href: "/news/company-news",
-  },
-  {
-    name: "Industry Information",
-    href: "/news/industry-information",
-  },
+    {
+        name: "Company News",
+        href: "/news/company-news",
+    },
+    {
+        name: "Industry Information",
+        href: "/news/industry-information",
+    },
 ];
 ---
 

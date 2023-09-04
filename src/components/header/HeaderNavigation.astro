@@ -1,6 +1,7 @@
 ---
 import HomeIcon from "@assets/HomeIcon.astro";
 import navlinksJson from "@data/navlinks.json";
+import { t } from "i18next";
 
 const { pathname } = Astro.url;
 
@@ -12,23 +13,24 @@ const navLinks = navlinksJson.contents;
     <ul class="flex justify-center space-x-1">
       {
         navLinks.map((navLink) => {
-          const { name, url } = navLink;
+          const { name, href } = navLink;
           return (
             <li>
               <a
-                href={url}
+                href={href}
                 class={`flex items-center px-8 py-2 rounded-full transition ${
-                  (pathname.startsWith(url) && url !== "/") || pathname === url
+                  (pathname.startsWith(href) && href !== "/") ||
+                  pathname === href
                     ? "bg-p text-white"
                     : ""
                 } hover:text-white hover:bg-p`}
               >
-                {url === "/" && (
+                {href === "/" && (
                   <div class="w-5 h-5 mr-2">
                     <HomeIcon />
                   </div>
                 )}
-                {name}
+                {t(name)}
               </a>
             </li>
           );
