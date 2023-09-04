@@ -1,5 +1,6 @@
 ---
 import MailboxIcon from "@assets/MailboxIcon.astro";
+import { utilAddLocalePathname } from "@services/utilService";
 ---
 
 <header class="text-xl border-b border-dashed">
@@ -7,8 +8,12 @@ import MailboxIcon from "@assets/MailboxIcon.astro";
     <!-- left -->
     <div class="flex">
       <h1 class="text-p flex items-center font-bold">
-        <a href="/" class="text-8xl">D.K.</a>
-        <a href="/"> Dongke (Shenzhen) Industrial Development Co.,Ltd.</a>
+        <a href={utilAddLocalePathname({ pathname: "/" })} class="text-8xl"
+          >D.K.</a
+        >
+        <a href={utilAddLocalePathname({ pathname: "/" })}>
+          Dongke (Shenzhen) Industrial Development Co.,Ltd.</a
+        >
       </h1>
     </div>
 
