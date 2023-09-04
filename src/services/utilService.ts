@@ -13,8 +13,11 @@ export function utilSlugToTitle(slug: string): string {
     .join(" ");
 }
 
-export function utilAddLocalePathname(params: { pathname: string }) {
-  const language = i18next.language;
+export function utilAddLocalePathname(params: {
+  pathname: string;
+  locale?: string;
+}) {
+  const language = params.locale ?? i18next.language;
   const { pathname } = params;
 
   if (language === "en") {

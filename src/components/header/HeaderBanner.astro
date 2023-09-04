@@ -4,17 +4,29 @@ import XmlIcon from "@assets/XmlIcon.astro";
 import SitemapIcon from "@assets/SitemapIcon.astro";
 import RssIcon from "@assets/RssIcon.astro";
 import WriteIcon from "@assets/WriteIcon.astro";
+import {
+  utilAddLocalePathname,
+  utilRemoveLocalePathname,
+} from "@services/utilService";
+
+const { pathname } = Astro.url;
 
 const languages = [
   {
     name: "中文版",
     flag: "/images/flags/chinese.webp",
-    url: "/zh",
+    url: utilAddLocalePathname({
+      pathname: utilRemoveLocalePathname({ pathname }),
+      locale: "zh",
+    }),
   },
   {
     name: "English",
     flag: "/images/flags/english.png",
-    url: "/en",
+    url: utilAddLocalePathname({
+      pathname: utilRemoveLocalePathname({ pathname }),
+      locale: "en",
+    }),
   },
 ];
 
