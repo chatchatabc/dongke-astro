@@ -5,6 +5,8 @@ import Header from "@components/header/Header.astro";
 import HeaderBanner from "@components/header/HeaderBanner.astro";
 import HeaderNavigation from "@components/header/HeaderNavigation.astro";
 import { ViewTransitions } from "astro:transitions";
+import { HeadHrefLangs } from "astro-i18next/components";
+import i18next from "i18next";
 
 export type LayoutProps = {
   title?: string;
@@ -14,7 +16,7 @@ const { title = "Dongke" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -40,6 +42,7 @@ const { title = "Dongke" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <HeadHrefLangs />
   </head>
   <body>
     <HeaderBanner />

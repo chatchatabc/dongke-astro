@@ -1,10 +1,12 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import { astroImageTools } from "astro-imagetools";
+import astroI18next from "astro-i18next";
 
 export default defineConfig({
+  site: "https://dongke.pages.dev",
   server: {
     port: 3000,
   },
-  integrations: [tailwind(), astroImageTools],
+  integrations: [tailwind(), astroI18next(), astroImageTools],
 });
