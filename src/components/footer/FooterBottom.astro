@@ -1,5 +1,6 @@
 ---
 import { Picture } from "astro-imagetools/components";
+import contactUsJson from "@data/contact-us.json";
 ---
 
 <section class="container flex py-8 text-white">
@@ -10,14 +11,10 @@ import { Picture } from "astro-imagetools/components";
 
   <!-- Center -->
   <ul class="space-y-2 w-3/5 mx-auto">
-    <li>Manager Liao: 13510477115</li>
-    <li>Manager Zhang: 13823396824</li>
-    <li>Email: william@dkmecial.cn</li>
-    <li>
-      Add:1st Floor, Building A, Kelixing Industrial Zone, Tiantangwei, Fenggang
-      Town,
-    </li>
-    <li>Dongguan City, Guangdong Province</li>
+    <li>Manager Liao: {contactUsJson.liao}</li>
+    <li>Manager Zhang: {contactUsJson.zhang}</li>
+    <li>Email: {contactUsJson.email}</li>
+    <li>Address: {contactUsJson.address}</li>
   </ul>
 
   <!-- QR Code -->
