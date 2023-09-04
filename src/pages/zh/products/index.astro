@@ -1,11 +1,16 @@
 ---
 import { changeLanguage } from "i18next";
-import InnerLayout from "@layouts/InnerLayout.astro";
+import InnerSideLayout from "@layouts/InnerSideLayout.astro";
+import productsJson from "@data/products.json";
 
 changeLanguage("zh");
 ---
 
-<InnerLayout bannerSrc="/images/products.png" bannerAlt="products">
+<InnerSideLayout
+  navlinks={productsJson.navlinks}
+  bannerSrc="/images/products.png"
+  bannerAlt="products"
+>
   <h1>Products</h1>
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
@@ -41,4 +46,4 @@ changeLanguage("zh");
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
     voluptatibus, qu
   </p>
-</InnerLayout>
+</InnerSideLayout>

@@ -1,0 +1,25 @@
+{
+  "navlinks": [
+    {
+      "name": "custom-packaging",
+      "pathname": "/products/custom-packaging"
+    },
+    {
+      "name": "personal-safety-equipment",
+      "pathname": "/products/personal-safety-equipment"
+    },
+    {
+      "name": "food-and-catering-packaging",
+      "pathname": "/products/food-and-catering-packaging"
+    },
+    {
+      "name": "school-and-office-supplies",
+      "pathname": "/products/school-and-office-supplies"
+    }
+  ],
+  "contents": [
+    {
+      "name": "Full face shields"
+    }
+  ]
+}
