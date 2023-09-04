@@ -1,8 +1,23 @@
 ---
-import InnerLayout from "@layouts/InnerLayout.astro";
+import InnerSideLayout from "@layouts/InnerSideLayout.astro";
+
+const navlinks = [
+  {
+    name: "Company News",
+    href: "/news/company-news",
+  },
+  {
+    name: "Industry Information",
+    href: "/news/industry-information",
+  },
+];
 ---
 
-<InnerLayout bannerSrc="/images/news.jpeg" bannerAlt="News">
+<InnerSideLayout
+  navlinks={navlinks}
+  bannerSrc="/images/news.jpeg"
+  bannerAlt="News"
+>
   <h1>News</h1>
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
@@ -38,4 +53,4 @@ import InnerLayout from "@layouts/InnerLayout.astro";
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
     voluptatibus, qu
   </p>
-</InnerLayout>
+</InnerSideLayout>

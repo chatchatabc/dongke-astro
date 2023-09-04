@@ -1,0 +1,84 @@
+---
+import InnerLayout from "./InnerLayout.astro";
+import type { LayoutProps } from "./Layout.astro";
+import { Img } from "astro-imagetools/components";
+
+type Props = {
+  navlinks: { name: string; href: string }[];
+  bannerSrc: string;
+  bannerAlt: string;
+} & LayoutProps;
+
+const props = Astro.props as Props;
+---
+
+<InnerLayout {...props}>
+  <section class="flex container py-4">
+    <aside class="w-64 space-y-4">
+      <!-- Navigation -->
+      <section class="rounded-t-sm overflow-hidden">
+        <header class="bg-p py-2 px-4 text-white text-lg capitalize">
+          <h3>{props.bannerAlt}</h3>
+        </header>
+
+        <nav class="border">
+          <ul class="divide-y divide-gray-300">
+            {
+              props.navlinks.map((navlink) => {
+                const { name, href } = navlink;
+                return (
+                  <li>
+                    <a
+                      href={href}
+                      class="bg-gray-100 block px-4 py-2 transition hover:bg-white hover:text-p"
+                    >
+                      {name}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+      </section>
+
+      <!-- Contact Us -->
+      <section class="rounded-t-sm overflow-hidden">
+        <header class="bg-p py-2 px-4 text-white text-lg">
+          <h3>Contact us</h3>
+        </header>
+
+        <section class="border py-2 px-3 text-sm">
+          <ul class="space-y-2">
+            <li>Manager Liao: 13510477115</li>
+            <li>Manager Zhang: 13823396824</li>
+            <li>
+              Email:
+              <a href="mailto:william@dkmecial.cn"> william@dkmecial.cn</a>
+            </li>
+            <li>
+              Address: 1st Floor, Building A, Kelixing Industrial Zone,
+              Tiantangwei, Fenggang Town, Dongguan City, Guangdong Province
+            </li>
+          </ul>
+
+          <footer>
+            <a class="">
+              <Img src="/images/alibaba.jpeg" alt="Alibaba" />
+            </a>
+          </footer>
+        </section>
+      </section>
+    </aside>
+
+    <section class="flex-1 px-4">
+      <header class="border-b pb-2">
+        <h2 class="capitalize text-2xl">{props.bannerAlt}</h2>
+      </header>
+
+      <section>
+        <slot />
+      </section>
+    </section>
+  </section>
+</InnerLayout>
