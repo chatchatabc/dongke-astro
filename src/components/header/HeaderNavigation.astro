@@ -2,9 +2,13 @@
 import HomeIcon from "@assets/HomeIcon.astro";
 import navlinksJson from "@data/navlinks.json";
 import { t } from "i18next";
-import { utilAddLocalePathname } from "@services/utilService";
+import {
+  utilAddLocalePathname,
+  utilRemoveLocalePathname,
+} from "@services/utilService";
 
-const { pathname: astroPathname } = Astro.url;
+let { pathname: astroPathname } = Astro.url;
+astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
 
 const navLinks = navlinksJson.contents;
 ---
