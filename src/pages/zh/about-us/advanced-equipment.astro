@@ -1,0 +1,68 @@
+---
+import AboutUsNavigation from "@components/AboutUsNavigation.astro";
+import InnerLayout from "@layouts/InnerLayout.astro";
+import { Img } from "astro-imagetools/components";
+import { t, changeLanguage } from "i18next";
+
+changeLanguage("zh");
+
+const images = [
+    { name: "design", src: "/images/about-us/design.jpeg" },
+    {
+        name: "cut-paper-equipment",
+        src: "/images/about-us/cut-paper-equipment.jpeg",
+    },
+    {
+        name: "heidelber-press",
+        src: "/images/about-us/heidelberg-press.jpeg",
+    },
+    {
+        name: "blue-paper-machine",
+        src: "/images/about-us/blue-paper-machine.jpeg",
+    },
+    {
+        name: "sticky-box-machine",
+        src: "/images/about-us/sticky-box-machine.jpeg",
+    },
+    {
+        name: "ctp",
+        src: "/images/about-us/ctp.jpeg",
+    },
+    {
+        name: "automatic-die-cutting-machine",
+        src: "/images/about-us/automatic-die-cutting-machine.jpeg",
+    },
+    {
+        name: "5",
+        src: "/images/about-us/5.jpeg",
+    },
+];
+---
+
+<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
+  <AboutUsNavigation />
+
+  <section class="container py-4 space-y-8">
+    <ul class="flex flex-wrap">
+      {
+        images.map((image) => {
+          const { name, src } = image;
+
+          return (
+            <li class="w-1/4 p-2">
+              <figure>
+                <div>
+                  <Img src={src} alt={t(name)} />
+                </div>
+
+                <figcaption>
+                  <h3 class="text-center text-sm">{t(name)}</h3>
+                </figcaption>
+              </figure>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</InnerLayout>

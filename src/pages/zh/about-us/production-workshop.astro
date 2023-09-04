@@ -1,0 +1,19 @@
+---
+import { changeLanguage } from "i18next";
+import AboutUsNavigation from "@components/AboutUsNavigation.astro";
+import InnerLayout from "@layouts/InnerLayout.astro";
+import { Img } from "astro-imagetools/components";
+
+changeLanguage("zh");
+---
+
+<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
+  <AboutUsNavigation />
+
+  <section class="container pb-8 space-y-8">
+    <Img
+      src="/images/about-us/production-workshop.jpeg"
+      alt="Production Workshop"
+    />
+  </section>
+</InnerLayout>
