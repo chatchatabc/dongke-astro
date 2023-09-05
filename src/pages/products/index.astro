@@ -1,49 +1,45 @@
 ---
-import { changeLanguage } from "i18next";
 import InnerSideLayout from "@layouts/InnerSideLayout.astro";
 import productsJson from "@data/products.json";
+import { Img } from "astro-imagetools/components";
+import { t, changeLanguage } from "i18next";
 
 changeLanguage("en");
+
+const products = productsJson.contents;
 ---
 
 <InnerSideLayout
   navlinks={productsJson.navlinks}
   bannerSrc="/images/products.png"
   bannerAlt="products"
+  subtitle="Products"
 >
-  <h1>Products</h1>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, quibusdam, quia, quos voluptatem voluptatum quod voluptates
-    quas doloribus quidem voluptate. Quisquam voluptatibus, quibusdam, quia,
-    quos voluptatem voluptatum quod voluptates quas doloribus quidem voluptate.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-    voluptatibus, qu
-  </p>
+  <ul class="flex flex-wrap -mx-2 overflow-hidden">
+    {
+      products.map((product) => {
+        const featuredImgSrc = product.images[0];
+        return (
+          <li class="w-1/4 p-2">
+            <a
+              href={`/products/${product.category}/${product.subCategory}/${product.slug}`}
+              class="block w-full"
+            >
+              <figure class="border border-gray-300 bg-gray-300 transition hover:border-p hover:bg-p hover:text-white">
+                <div class="relative pb-[125%]">
+                  <div class="absolute w-full h-full top-0">
+                    {featuredImgSrc && <Img src={featuredImgSrc} alt="test" />}
+                  </div>
+                </div>
+
+                <figcaption class="text-center py-2 font-medium">
+                  <p>{t(`products:${product.slug}`)}</p>
+                </figcaption>
+              </figure>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
 </InnerSideLayout>
