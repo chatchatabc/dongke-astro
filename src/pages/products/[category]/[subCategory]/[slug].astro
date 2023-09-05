@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     return products.map((product) => {
         return {
             params: {
-                subCategory: product.subCategory[0],
+                subCategory: product.subCategory[0] ?? "all",
                 slug: product.slug,
                 category: product.category[0],
             },
@@ -36,8 +36,8 @@ const summaryEntry = productsCollection.find((product) => {
 const descriptionEntry = productsCollection.find((product) => {
     return product.data.type === "description";
 })!;
-const { Content: SummaryContent } = await summaryEntry.render();
-const { Content: DescriptionContent } = await descriptionEntry.render();
+const { Content: SummaryContent } = (await summaryEntry?.render()) ?? {};
+const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {};
 ---
 
 <InnerSideLayout
@@ -58,7 +58,7 @@ const { Content: DescriptionContent } = await descriptionEntry.render();
         </header>
 
         <section class="prose max-w-none">
-          <SummaryContent />
+          {SummaryContent && <SummaryContent />}
 
           <p>
             <span class="text-2xl font-bold">
@@ -110,7 +110,7 @@ const { Content: DescriptionContent } = await descriptionEntry.render();
       <section data-product-inq-container class="transition">Inquiry</section>
 
       <section data-product-desc-container class="transition prose max-w-none">
-        <DescriptionContent />
+        {DescriptionContent && <DescriptionContent />}
       </section>
     </section>
   </section>
