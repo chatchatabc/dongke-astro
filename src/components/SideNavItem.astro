@@ -1,6 +1,9 @@
 ---
 import CaretIcon from "@assets/CaretIcon.astro";
-import { utilAddLocalePathname } from "@services/utilService";
+import {
+  utilAddLocalePathname,
+  utilRemoveLocalePathname,
+} from "@services/utilService";
 import { t } from "i18next";
 
 type Props = {
@@ -16,7 +19,8 @@ type Props = {
 
 const { navlink } = Astro.props as Props;
 const { name, pathname, children } = navlink;
-const { pathname: astroPathname } = Astro.url;
+let { pathname: astroPathname } = Astro.url;
+astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
 ---
 
 <side-nav-item>
