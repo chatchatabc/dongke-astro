@@ -81,6 +81,18 @@
       "images": ["/images/products/adult-goggles/adult-goggles-1.jpeg"]
     },
     {
+      "slug": "kids-safety-goggles",
+      "category": ["personal-safety-equipment"],
+      "subCategory": ["kids-goggles"],
+      "price": {
+        "amount": 20,
+        "currency": "CNY",
+        "unit": "piece",
+        "unitTotal": 10
+      },
+      "images": ["/images/products/kids-goggles/kids-goggles-1.jpeg"]
+    },
+    {
       "slug": "the-paper-box-for-baby-toy-3",
       "category": ["custom-packaging"],
       "subCategory": [],
