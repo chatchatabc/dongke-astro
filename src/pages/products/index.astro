@@ -19,10 +19,12 @@ const products = productsJson.contents;
     {
       products.map((product) => {
         const featuredImgSrc = product.images[0];
+        const category = product.category[0];
+        const subCategory = product.subCategory[0] ?? "all";
         return (
           <li class="w-1/4 p-2">
             <a
-              href={`/products/${product.category}/${product.subCategory}/${product.slug}`}
+              href={`/products/${category}/${subCategory}/${product.slug}`}
               class="block w-full"
             >
               <figure class="border border-gray-300 bg-gray-300 transition hover:border-p hover:bg-p hover:text-white">
