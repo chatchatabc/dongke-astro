@@ -1,0 +1,167 @@
+---
+import productsJson from "@data/products.json";
+import InnerSideLayout from "@layouts/InnerSideLayout.astro";
+import { getCollection } from "astro:content";
+import { Img } from "astro-imagetools/components";
+import i18next, { t, changeLanguage } from "i18next";
+import contactUsJson from "@data/contact-us.json";
+
+changeLanguage("zh");
+
+export async function getStaticPaths() {
+    const products = productsJson.contents;
+    return products.map((product) => {
+        return {
+            params: {
+                subCategory: product.subCategory[0],
+                slug: product.slug,
+                category: product.category[0],
+            },
+            props: {
+                product,
+            },
+        };
+    });
+}
+const { subCategory } = Astro.params;
+const { product } = Astro.props;
+const navlinks = productsJson.navlinks;
+let productsCollection = await getCollection("products");
+productsCollection = productsCollection.filter((entry) => {
+    return entry.slug.startsWith(`${i18next.language}/${product.slug}`);
+});
+const summaryEntry = productsCollection.find((product) => {
+    return product.data.type === "summary";
+})!;
+const descriptionEntry = productsCollection.find((product) => {
+    return product.data.type === "description";
+})!;
+const { Content: SummaryContent } = await summaryEntry.render();
+const { Content: DescriptionContent } = await descriptionEntry.render();
+---
+
+<InnerSideLayout
+  navlinks={navlinks}
+  bannerAlt="products"
+  bannerSrc="/images/products.png"
+  subtitle={subCategory}
+>
+  <section class="py-4">
+    <figure class="flex">
+      <div class="w-1/2 border">
+        <Img src={product.images[0]} alt={product.slug} />
+      </div>
+
+      <figcaption class="px-4">
+        <header class="pb-2 border-b border-dashed border-p">
+          <h3 class="text-p text-2xl">{t(`products:${product.slug}`)}</h3>
+        </header>
+
+        <section class="prose max-w-none">
+          <SummaryContent />
+
+          <p>
+            <span class="text-2xl font-bold">
+              {
+                new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: product.price.currency,
+                }).format(product.price.amount)
+              }
+            </span> / {product.price.unitTotal}
+            {product.price.unit}
+          </p>
+
+          <p>Price may vary online, in stores</p>
+        </section>
+
+        <footer class="mt-16 text-lg font-medium">
+          <header>
+            <h4>Contact us:</h4>
+          </header>
+
+          <ul class="mt-2">
+            <li>WhatsApp: {contactUsJson.whatsApp}</li>
+            <li>Email: {contactUsJson.email}</li>
+          </ul>
+        </footer>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="mt-4">
+    <header class="flex text-lg">
+      <button
+        data-product-desc-btn
+        class="border-x border-t px-4 py-2 transition hover:text-p"
+      >
+        Product Description
+      </button>
+      <button
+        data-produc-inq-btn
+        class="border-x border-t px-4 py-2 transition hover:text-p"
+      >
+        Make an inquiry
+      </button>
+    </header>
+
+    <section class="border p-2">
+      <!-- Inquiry -->
+      <section data-product-inq-container class="transition">Inquiry</section>
+
+      <section data-product-desc-container class="transition prose max-w-none">
+        <DescriptionContent />
+      </section>
+    </section>
+  </section>
+</InnerSideLayout>
+
+<script>
+  let activeBtn = "product-desc-btn";
+
+  const productDescBtn = document.querySelector<HTMLElement>(
+    "[data-product-desc-btn]"
+  )!;
+  const productInqBtn = document.querySelector<HTMLElement>(
+    "[data-produc-inq-btn]"
+  )!;
+  const productDescContainer = document.querySelector<HTMLElement>(
+    "[data-product-desc-container]"
+  )!;
+  const productInqContainer = document.querySelector<HTMLElement>(
+    "[data-product-inq-container]"
+  )!;
+
+  productDescBtn.addEventListener("click", () => {
+    if (activeBtn === "product-desc-btn") return;
+    toggleButton(productDescBtn);
+    toggleButton(productInqBtn);
+    toggleContainer(productDescContainer);
+    toggleContainer(productInqContainer);
+    activeBtn = "product-desc-btn";
+  });
+
+  productInqBtn.addEventListener("click", () => {
+    if (activeBtn === "produc-inq-btn") return;
+    toggleButton(productDescBtn);
+    toggleButton(productInqBtn);
+    toggleContainer(productDescContainer);
+    toggleContainer(productInqContainer);
+    activeBtn = "produc-inq-btn";
+  });
+
+  function toggleButton(button: HTMLElement) {
+    button.classList.toggle("border-p");
+    button.classList.toggle("bg-p");
+    button.classList.toggle("text-white");
+    button.classList.toggle("hover:text-p");
+  }
+
+  function toggleContainer(container: HTMLElement) {
+    container.classList.toggle("hidden");
+  }
+
+  // Initial toggle
+  toggleButton(productDescBtn);
+  toggleContainer(productInqContainer);
+</script>
