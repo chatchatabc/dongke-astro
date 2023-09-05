@@ -3,6 +3,7 @@ import InnerSideLayout from "@layouts/InnerSideLayout.astro";
 import productsJson from "@data/products.json";
 import { Img } from "astro-imagetools/components";
 import { t, changeLanguage } from "i18next";
+import { utilAddLocalePathname } from "@services/utilService";
 
 changeLanguage("zh");
 
@@ -24,7 +25,9 @@ const products = productsJson.contents;
         return (
           <li class="w-1/4 p-2">
             <a
-              href={`/products/${category}/${subCategory}/${product.slug}`}
+              href={utilAddLocalePathname({
+                pathname: `/products/${category}/${subCategory}/${product.slug}`,
+              })}
               class="block w-full"
             >
               <figure class="border border-gray-300 bg-gray-300 transition hover:border-p hover:bg-p hover:text-white">
