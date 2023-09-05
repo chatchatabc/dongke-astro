@@ -8,9 +8,16 @@ import {
   utilAddLocalePathname,
   utilRemoveLocalePathname,
 } from "@services/utilService";
+import CaretIcon from "@assets/CaretIcon.astro";
+import SideNavItem from "@components/SideNavItem.astro";
+
+type Navlink = {
+  name: string;
+  pathname: string;
+};
 
 type Props = {
-  navlinks: { name: string; pathname: string }[];
+  navlinks: (Navlink & { children?: Navlink[] })[];
   bannerSrc: string;
   bannerAlt: string;
   subtitle?: string;
@@ -35,19 +42,9 @@ const props = Astro.props as Props;
           <ul class="divide-y divide-gray-300">
             {
               props.navlinks.map((navlink) => {
-                const { name, pathname } = navlink;
                 return (
                   <li>
-                    <a
-                      href={utilAddLocalePathname({ pathname })}
-                      class={`bg-gray-100 block px-4 py-2 transition ${
-                        astroPathname.startsWith(pathname)
-                          ? "text-p bg-white"
-                          : ""
-                      } hover:bg-white hover:text-p`}
-                    >
-                      {t(name)}
-                    </a>
+                    <SideNavItem navlink={navlink} />
                   </li>
                 );
               })

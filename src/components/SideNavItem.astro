@@ -1,0 +1,90 @@
+---
+import CaretIcon from "@assets/CaretIcon.astro";
+import { utilAddLocalePathname } from "@services/utilService";
+import { t } from "i18next";
+
+type Props = {
+  navlink: {
+    name: string;
+    pathname: string;
+    children?: {
+      name: string;
+      pathname: string;
+    }[];
+  };
+};
+
+const { navlink } = Astro.props as Props;
+const { name, pathname, children } = navlink;
+const { pathname: astroPathname } = Astro.url;
+---
+
+<side-nav-item>
+  <div
+    class={`flex bg-gray-100 transition ${
+      astroPathname.startsWith(pathname) ? "text-p bg-white" : ""
+    } hover:bg-white hover:text-p`}
+  >
+    <a
+      href={utilAddLocalePathname({ pathname })}
+      class={`block px-4 py-2  flex-1`}
+    >
+      {t(name)}
+    </a>
+
+    {
+      children && (
+        <button class="rotate-180 transition">
+          <div class="w-6 h-6 text-p">
+            <CaretIcon />
+          </div>
+        </button>
+      )
+    }
+  </div>
+
+  {
+    children && (
+      <div data-children class="grid grid-rows-[1fr] border-t transition-all">
+        <ul class="pl-4 border-gray-200 overflow-hidden">
+          {children.map((child) => {
+            const { name, pathname } = child;
+
+            return (
+              <li>
+                <a
+                  href={utilAddLocalePathname({ pathname })}
+                  class={`block px-4 py-2 transition ${
+                    astroPathname.startsWith(pathname) ? "text-p bg-white" : ""
+                  } hover:bg-white hover:text-p`}
+                >
+                  {t(name)}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    )
+  }
+</side-nav-item>
+
+<script>
+  class SideNavItem extends HTMLElement {
+    constructor() {
+      super();
+
+      const button = this.querySelector("button")!;
+      const children = this.querySelector("[data-children]")!;
+
+      button.addEventListener("click", () => {
+        button.classList.toggle("rotate-180");
+        children.classList.toggle("grid-rows-[1fr]");
+        children.classList.toggle("grid-rows-[0fr]");
+        children.classList.toggle("border-t");
+      });
+    }
+  }
+
+  customElements.define("side-nav-item", SideNavItem);
+</script>
