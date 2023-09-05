@@ -6,7 +6,25 @@
     },
     {
       "name": "personal-safety-equipment",
-      "pathname": "/products/personal-safety-equipment"
+      "pathname": "/products/personal-safety-equipment",
+      "children": [
+        {
+          "name": "face-shields",
+          "pathname": "/products/personal-safety-equipment/face-shields"
+        },
+        {
+          "name": "kids-face-shields",
+          "pathname": "/products/personal-safety-equipment/kids-face-shields"
+        },
+        {
+          "name": "adult-goggles",
+          "pathname": "/products/personal-safety-equipment/adult-goggles"
+        },
+        {
+          "name": "kids-goggles",
+          "pathname": "/products/personal-safety-equipment/kids-goggles"
+        }
+      ]
     },
     {
       "name": "food-and-catering-packaging",
@@ -19,7 +37,16 @@
   ],
   "contents": [
     {
-      "name": "Full face shields"
+      "slug": "full-face-shields",
+      "category": ["personal-safety-equipment"],
+      "subCategory": ["face-shields"],
+      "price": {
+        "amount": 50,
+        "currency": "CNY",
+        "unit": "piece",
+        "unitTotal": 10
+      },
+      "images": []
     }
   ]
 }
