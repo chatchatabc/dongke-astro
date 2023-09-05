@@ -1,0 +1,73 @@
+---
+import { changeLanguage, t } from "i18next";
+import productsJson from "@data/products.json";
+import InnerSideLayout from "@layouts/InnerSideLayout.astro";
+import { Img } from "astro-imagetools/components";
+
+changeLanguage("en");
+
+export function getStaticPaths() {
+    const products = [...productsJson.contents];
+    const categories: string[] = [];
+    products.forEach((product) => {
+        product.category.forEach((category) => {
+            if (!categories.includes(category)) {
+                categories.push(category);
+            }
+        });
+    });
+    return categories.map((category) => {
+        return {
+            params: {
+                category,
+            },
+            props: {
+                products: products.filter((product) => {
+                    return product.category.includes(category);
+                }),
+            },
+        };
+    });
+}
+const { products } = Astro.props as {
+    products: typeof productsJson.contents;
+};
+const { subCategory, category } = Astro.params;
+---
+
+<InnerSideLayout
+  navlinks={productsJson.navlinks}
+  bannerAlt="products"
+  bannerSrc="/images/products.png"
+  subtitle={subCategory === "all" ? category : subCategory}
+>
+  <ul class="flex flex-wrap -mx-2 overflow-hidden">
+    {
+      products.map((product) => {
+        const featuredImgSrc = product.images[0];
+        const category = product.category[0];
+        const subCategory = product.subCategory[0] ?? "all";
+        return (
+          <li class="w-1/4 p-2">
+            <a
+              href={`/products/${category}/${subCategory}/${product.slug}`}
+              class="block w-full"
+            >
+              <figure class="border border-gray-300 bg-gray-300 transition hover:border-p hover:bg-p hover:text-white">
+                <div class="relative pb-[125%]">
+                  <div class="absolute w-full h-full top-0">
+                    {featuredImgSrc && <Img src={featuredImgSrc} alt="test" />}
+                  </div>
+                </div>
+
+                <figcaption class="text-center py-2 font-medium">
+                  <p>{t(`products:${product.slug}`)}</p>
+                </figcaption>
+              </figure>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</InnerSideLayout>
