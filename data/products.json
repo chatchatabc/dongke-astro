@@ -103,6 +103,34 @@
         "unitTotal": 10
       },
       "images": ["/images/products/custom-packaging/toy-3.jpeg"]
+    },
+    {
+      "slug": "disposable-fruit-box",
+      "category": ["food-and-catering-packaging"],
+      "subCategory": [],
+      "price": {
+        "amount": 20,
+        "currency": "CNY",
+        "unit": "piece",
+        "unitTotal": 10
+      },
+      "images": [
+        "/images/products/food-and-catering-packaging/disposable-fruit-box-1.jpeg"
+      ]
+    },
+    {
+      "slug": "a4-file-model",
+      "category": ["school-and-office-supplies"],
+      "subCategory": [],
+      "price": {
+        "amount": 20,
+        "currency": "CNY",
+        "unit": "piece",
+        "unitTotal": 10
+      },
+      "images": [
+        "/images/products/school-and-office-supplies/a4-file-model-1.jpeg"
+      ]
     }
   ]
 }
