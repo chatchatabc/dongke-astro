@@ -84,7 +84,11 @@ const links = [
         {
           languages.map(({ name, flag, url }) => (
             <li>
-              <a href={url} class="flex space-x-1 items-center">
+              <a
+                href={url}
+                class="flex space-x-1 items-center"
+                data-astro-reload
+              >
                 <div class="w-8">
                   <Img breakpoints={[50]} src={flag} alt={`${name} Flag`} />
                 </div>
