@@ -57,6 +57,18 @@
       ]
     },
     {
+      "slug": "kids-face-shield",
+      "category": ["personal-safety-equipment"],
+      "subCategory": ["kids-face-shields"],
+      "price": {
+        "amount": 20,
+        "currency": "CNY",
+        "unit": "piece",
+        "unitTotal": 10
+      },
+      "images": ["/images/products/face-shields/kids-face-shield-1.jpeg"]
+    },
+    {
       "slug": "the-paper-box-for-baby-toy-3",
       "category": ["custom-packaging"],
       "subCategory": [],
