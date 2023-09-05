@@ -98,7 +98,7 @@ const { Content: DescriptionContent } = await descriptionEntry.render();
         Product Description
       </button>
       <button
-        data-produc-inq-btn
+        data-product-inq-btn
         class="border-x border-t px-4 py-2 transition hover:text-p"
       >
         Make an inquiry
@@ -124,7 +124,7 @@ const { Content: DescriptionContent } = await descriptionEntry.render();
       "[data-product-desc-btn]"
     )!;
     const productInqBtn = document.querySelector<HTMLElement>(
-      "[data-produc-inq-btn]"
+      "[data-product-inq-btn]"
     )!;
     const productDescContainer = document.querySelector<HTMLElement>(
       "[data-product-desc-container]"
@@ -143,12 +143,12 @@ const { Content: DescriptionContent } = await descriptionEntry.render();
     });
 
     productInqBtn.addEventListener("click", () => {
-      if (activeBtn === "produc-inq-btn") return;
+      if (activeBtn === "product-inq-btn") return;
       toggleButton(productDescBtn);
       toggleButton(productInqBtn);
       toggleContainer(productDescContainer);
       toggleContainer(productInqContainer);
-      activeBtn = "produc-inq-btn";
+      activeBtn = "product-inq-btn";
     });
 
     // Initial toggle
