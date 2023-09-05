@@ -55,6 +55,18 @@
         "/images/products/full-face-shields/6.jpeg",
         "/images/products/full-face-shields/7.jpeg"
       ]
+    },
+    {
+      "slug": "the-paper-box-for-baby-toy-3",
+      "category": ["custom-packaging"],
+      "subCategory": [],
+      "price": {
+        "amount": 20,
+        "currency": "CNY",
+        "unit": "piece",
+        "unitTotal": 10
+      },
+      "images": ["/images/products/custom-packaging/toy-3.jpeg"]
     }
   ]
 }
