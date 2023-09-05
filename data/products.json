@@ -41,12 +41,20 @@
       "category": ["personal-safety-equipment"],
       "subCategory": ["face-shields"],
       "price": {
-        "amount": 50,
+        "amount": 20,
         "currency": "CNY",
         "unit": "piece",
         "unitTotal": 10
       },
-      "images": []
+      "images": [
+        "/images/products/full-face-shields/1.jpeg",
+        "/images/products/full-face-shields/2.jpeg",
+        "/images/products/full-face-shields/3.jpeg",
+        "/images/products/full-face-shields/4.jpeg",
+        "/images/products/full-face-shields/5.jpeg",
+        "/images/products/full-face-shields/6.jpeg",
+        "/images/products/full-face-shields/7.jpeg"
+      ]
     }
   ]
 }

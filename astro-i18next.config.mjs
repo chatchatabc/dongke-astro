@@ -1,6 +1,6 @@
 export default {
   defaultLocale: "en",
   locales: ["en", "zh"],
-  namespaces: ["common"],
+  namespaces: ["common", "products"],
   defaultNamespace: "common",
 };

@@ -11,6 +11,13 @@ const newsCollection = defineCollection({
   }),
 });
 
+const productsCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    type: z.string(),
+  }),
+});
+
 export const collections = {
   news: newsCollection,
 };
