@@ -34,7 +34,11 @@ const { pathname: astroPathname } = Astro.url;
 
     {
       children && (
-        <button class="rotate-180 transition">
+        <button
+          class={`transition ${
+            astroPathname.startsWith(pathname) ? "rotate-180" : ""
+          }`}
+        >
           <div class="w-6 h-6 text-p">
             <CaretIcon />
           </div>
@@ -45,7 +49,14 @@ const { pathname: astroPathname } = Astro.url;
 
   {
     children && (
-      <div data-children class="grid grid-rows-[1fr] border-t transition-all">
+      <div
+        data-children
+        class={`grid border-t transition-all ${
+          astroPathname.startsWith(pathname)
+            ? "grid-rows-[1fr]"
+            : "grid-rows-[0fr]"
+        }`}
+      >
         <ul class="pl-4 border-gray-200 overflow-hidden">
           {children.map((child) => {
             const { name, pathname } = child;
