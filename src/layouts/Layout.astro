@@ -59,3 +59,39 @@ const { title = "Dongke" } = Astro.props;
     </footer>
   </body>
 </html>
+
+<script>
+  import { utilAddLocalePathname } from "@services/utilService";
+  const cookie = document.cookie;
+
+  // Get language
+  const language = cookie
+    .split("; ")
+    .find((row) => row.startsWith("language"));
+
+  // If no language cookie, set it
+  if (!language) {
+    // get user locale
+    const userLocale = navigator.language;
+    const locale = userLocale.split("-")[0];
+
+    // set cookie
+    document.cookie = `language=${locale}; path=/; max-age=31536000`;
+
+    // get current pathname
+    let pathname = document.location.pathname;
+
+    // remove locale from pathname
+    pathname =
+      pathname.split("/")[1].length === 2 ? pathname.slice(3) : pathname;
+
+    // add locale to pathname
+    pathname = utilAddLocalePathname({
+      pathname,
+      locale,
+    });
+
+    // redirect to new pathname
+    document.location.href = pathname;
+  }
+</script>
