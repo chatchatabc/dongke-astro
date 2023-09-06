@@ -7,8 +7,9 @@ import {
   utilRemoveLocalePathname,
 } from "@services/utilService";
 import { Picture } from "astro-imagetools/components";
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 import navlinksJson from "@data/navlinks.json";
+import LanguageIcon from "@assets/LanguageIcon.astro";
 
 const navlinks = navlinksJson.contents;
 let { pathname: astroPathname } = Astro.url;
@@ -67,7 +68,7 @@ astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
     <!-- Mobile Navigation -->
     <nav
       data-mobile-nav
-      class="fixed translate-x-full opacity-0 pointer-events-none transition duration-300 w-full left-0 bg-black text-white lg:hidden"
+      class="fixed flex flex-col translate-x-full opacity-0 pointer-events-none transition duration-300 w-full left-0 bg-black text-white lg:hidden"
     >
       <ul class="divide-y">
         {
@@ -91,6 +92,40 @@ astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
           })
         }
       </ul>
+
+      <footer class="mt-auto">
+        <ul class="flex text-center items-center p-2 text-base">
+          <li class="flex-1">
+            <a
+              class={`${i18next.language === "en" ? "text-p" : ""}`}
+              href={utilAddLocalePathname({
+                pathname: astroPathname,
+                locale: "en",
+              })}
+            >
+              English
+            </a>
+          </li>
+
+          <li>
+            <div class="h-8 w-8">
+              <LanguageIcon />
+            </div>
+          </li>
+
+          <li class="flex-1">
+            <a
+              class={`${i18next.language === "zh" ? "text-p" : ""}`}
+              href={utilAddLocalePathname({
+                pathname: astroPathname,
+                locale: "zh",
+              })}
+            >
+              中文版
+            </a>
+          </li>
+        </ul>
+      </footer>
     </nav>
   </section>
 </header>
