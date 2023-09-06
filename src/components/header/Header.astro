@@ -1,29 +1,137 @@
 ---
 import MailboxIcon from "@assets/MailboxIcon.astro";
-import { utilAddLocalePathname } from "@services/utilService";
+import MenuIcon from "@assets/MenuIcon.astro";
+import XIcon from "@assets/XIcon.astro";
+import {
+  utilAddLocalePathname,
+  utilRemoveLocalePathname,
+} from "@services/utilService";
+import { Picture } from "astro-imagetools/components";
+import { t } from "i18next";
+import navlinksJson from "@data/navlinks.json";
+
+const navlinks = navlinksJson.contents;
+let { pathname: astroPathname } = Astro.url;
+astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
 ---
 
-<header class="text-xl border-b border-dashed">
-  <section class="container py-4 flex items-center justify-between">
+<header
+  data-mobile-header
+  class="text-xl border-b border-dashed sticky top-0 bg-white z-[1] lg:static"
+>
+  <section class="container py-2 flex items-center justify-between lg:py-8">
     <!-- left -->
     <div class="flex">
       <h1 class="text-p flex items-center font-bold">
-        <a href={utilAddLocalePathname({ pathname: "/" })} class="text-8xl"
-          >D.K.</a
-        >
         <a href={utilAddLocalePathname({ pathname: "/" })}>
-          Dongke (Shenzhen) Industrial Development Co.,Ltd.</a
+          <div class="w-20 overflow-hidden mr-4 md:w-32 lg:w-40">
+            <Picture src="/images/logo.png" alt="logo" />
+          </div>
+        </a>
+        <a
+          href={utilAddLocalePathname({ pathname: "/" })}
+          class="hidden md:block"
         >
+          {t("site:title")}
+        </a>
       </h1>
     </div>
 
     <!-- Right -->
-    <div class="flex items-center space-x-2">
+    <div class="items-center space-x-2 hidden lg:flex">
       <div class="w-12 h-12 text-p">
         <MailboxIcon />
       </div>
 
       <p>E-mail:sales9@chinapacking.biz</p>
     </div>
+
+    <button
+      data-mobile-nav-btn
+      class="block text-p overflow-hidden relative lg:hidden"
+      aria-label="Menu"
+      aria-expanded="false"
+    >
+      <div
+        data-menu-close-icon
+        class="w-8 h-6 translate-x-full transition duration-300 absolute bg-white"
+      >
+        <XIcon />
+      </div>
+
+      <div data-menu-icon class="w-8 h-6 transition duration-300">
+        <MenuIcon />
+      </div>
+    </button>
+
+    <!-- Mobile Navigation -->
+    <nav
+      data-mobile-nav
+      class="fixed translate-x-full opacity-0 pointer-events-none transition duration-300 w-full left-0 bg-black text-white lg:hidden"
+    >
+      <ul class="divide-y">
+        {
+          navlinks.map((navlink) => {
+            const { pathname, name } = navlink;
+            return (
+              <li>
+                <a
+                  class={`px-4 py-2 block w-full ${
+                    (astroPathname.startsWith(pathname) && pathname !== "/") ||
+                    astroPathname === pathname
+                      ? "text-p"
+                      : ""
+                  }`}
+                  href={utilAddLocalePathname({ pathname })}
+                >
+                  {t(name)}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
   </section>
 </header>
+
+<script>
+  const initialSetup = () => {
+    const mobileHeader = document.querySelector<HTMLElement>(
+      "[data-mobile-header]"
+    );
+    const mobileNav = document.querySelector("[data-mobile-nav]");
+    const mobileNavBtn = document.querySelector("[data-mobile-nav-btn]");
+    const menuIcon = document.querySelector("[data-menu-icon]");
+    const menuCloseIcon = document.querySelector("[data-menu-close-icon]");
+
+    const mobileHeaderHeight = mobileHeader?.clientHeight;
+    mobileNav?.setAttribute(
+      "style",
+      `top: ${mobileHeaderHeight}px; height: calc(100vh - ${mobileHeaderHeight}px)`
+    );
+
+    mobileNavBtn?.addEventListener("click", () => {
+      mobileNavBtn.setAttribute(
+        "aria-expanded",
+        mobileNavBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+      );
+      mobileNav?.classList.toggle("opacity-0");
+      mobileNav?.classList.toggle("translate-x-full");
+      mobileNav?.classList.toggle("pointer-events-none");
+      menuIcon?.classList.toggle("-translate-x-full");
+      menuIcon?.classList.toggle("-rotate-180");
+      menuCloseIcon?.classList.toggle("translate-x-full");
+      menuCloseIcon?.classList.toggle("-rotate-180");
+
+      // Prevent scrolling on body when mobile nav is open
+      document.body.classList.toggle("overflow-hidden");
+    });
+  };
+
+  // Trigger initial setup on page swap
+  document.addEventListener("astro:after-swap", initialSetup);
+
+  // Trigger initial setup on first load
+  initialSetup();
+</script>
