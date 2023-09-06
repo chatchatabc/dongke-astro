@@ -1,4 +1,5 @@
 ---
+import Footer from "@components/footer/Footer.astro";
 import FooterBottom from "@components/footer/FooterBottom.astro";
 import FooterNavigation from "@components/footer/FooterNavigation.astro";
 import Header from "@components/header/Header.astro";
@@ -12,7 +13,7 @@ export type LayoutProps = {
   title?: string;
 };
 
-const { title = "Dongke" } = Astro.props;
+const { title = t("site:title") } = Astro.props;
 ---
 
 <!doctype html>
@@ -42,7 +43,7 @@ const { title = "Dongke" } = Astro.props;
     />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <title>{t(`site:title`)}</title>
+    <title>{title}</title>
     <ViewTransitions />
     <HeadHrefLangs />
   </head>
@@ -57,7 +58,7 @@ const { title = "Dongke" } = Astro.props;
 
     <footer class="bg-[#333]">
       <FooterNavigation />
-      <FooterBottom />
+      <Footer />
     </footer>
   </body>
 </html>
