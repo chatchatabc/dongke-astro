@@ -30,6 +30,8 @@ const navlinks = [
 const { news } = Astro.params;
 const newsEntry = await getEntry("news", `${i18next.language}/${news}`);
 const { Content } = await newsEntry!.render();
+const { title, timestamp } = newsEntry!.data;
+const date = new Date(timestamp);
 ---
 
 <InnerSideLayout
@@ -37,7 +39,25 @@ const { Content } = await newsEntry!.render();
   bannerSrc="/images/news.jpeg"
   navlinks={navlinks}
 >
-  <section class="prose max-w-[unset]">
+  <header class="text-center pt-2 pb-8 border-b">
+    <h1 class="text-2xl">
+      {title}
+    </h1>
+
+    <section class="mt-2 text-gray-500">
+      <p class="text-sm">
+        <span class="font-bold mr-1">Date Published:</span>
+        {
+          new Intl.DateTimeFormat("en-US", {
+            dateStyle: "medium",
+            timeStyle: "short",
+          }).format(date)
+        }
+      </p>
+    </section>
+  </header>
+
+  <section class="mt-8 prose max-w-[unset]">
     <Content />
   </section>
 </InnerSideLayout>
