@@ -56,17 +56,17 @@ newsCollection = newsCollection.filter((news) => {
 
           return (
             <li class="py-2">
-              <figure class="flex">
+              <figure class="flex flex-wrap">
                 <a
                   href={utilAddLocalePathname({ pathname })}
-                  class="block w-56"
+                  class="block w-full lg:w-56"
                 >
                   <div>
                     <Img src={image} alt={title} />
                   </div>
                 </a>
 
-                <figcaption class="flex-1 pl-4 space-y-4">
+                <figcaption class="flex-1 space-y-4 mt-4 lg:mt-0 lg:pl-4">
                   <header>
                     <h3 class="font-bold transition hover:text-p">
                       <a href={utilAddLocalePathname({ pathname })}>{title}</a>
