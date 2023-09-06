@@ -1,12 +1,42 @@
 ---
-import { changeLanguage } from "i18next";
+import { t, changeLanguage } from "i18next";
 import Layout from "@layouts/Layout.astro";
+import { Img } from "astro-imagetools/components";
+import productsJson from "@data/products.json";
+import { utilAddLocalePathname } from "@services/utilService";
+import EyeIcon from "@assets/EyeIcon.astro";
 
 changeLanguage("zh");
+
+const productCategories = productsJson.navlinks;
+const protectionProducts = [
+    {
+        name: "face-shields",
+        href: "/products/full-face-shields",
+        imgSrc: "/images/products/full-face-shields/1.jpeg",
+    },
+    {
+        name: "kids-goggles",
+        href: "/products/kids-goggles",
+        imgSrc: "/images/products/kids-goggles/kids-goggles-1.jpeg",
+    },
+    {
+        name: "adult-goggles",
+        href: "/products/adult-goggles",
+        imgSrc: "/images/products/adult-goggles/adult-goggles-1.jpeg",
+    },
+    {
+        name: "kids-face-shields",
+        href: "/products/kids-face-shields",
+        imgSrc: "/images/products/face-shields/kids-face-shield-1.jpeg",
+    },
+];
 ---
 
 <Layout>
-  <h1>404</h1>
-  <p>Page not found</p>
-  <div class="h-screen"></div>
+  <section>
+    <Img src="/images/home/hero-2.jpeg" alt="hero-1" />
+  </section>
+
+  <hr class="border-dashed my-8 border-gray-300" />
 </Layout>
