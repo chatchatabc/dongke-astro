@@ -6,9 +6,9 @@ import { t } from "i18next";
 const navlinks = navlinksJson.contents;
 ---
 
-<section class="container">
-  <nav class="border-b p-5 border-gray-500">
-    <ul class="flex justify-evenly text-white">
+<section class="container hidden md:block">
+  <nav class="border-b border-gray-500 p-5 px-0 lg:px-5">
+    <ul class="flex text-white justify-between lg:justify-evenly">
       {
         navlinks.map((navlink) => {
           const { name, pathname } = navlink;
