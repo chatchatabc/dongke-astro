@@ -6,7 +6,7 @@ import HeaderBanner from "@components/header/HeaderBanner.astro";
 import HeaderNavigation from "@components/header/HeaderNavigation.astro";
 import { ViewTransitions } from "astro:transitions";
 import { HeadHrefLangs } from "astro-i18next/components";
-import i18next from "i18next";
+import i18next, { t } from "i18next";
 
 export type LayoutProps = {
   title?: string;
@@ -19,7 +19,9 @@ const { title = "Dongke" } = Astro.props;
 <html lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={t(`site:description`)} />
+    <meta name="keywords" content={t(`site:keywords`)} />
+    <meta name="author" content={t(`site:author`)} />
     <meta name="viewport" content="width=device-width" />
     <link
       rel="apple-touch-icon"
@@ -40,7 +42,7 @@ const { title = "Dongke" } = Astro.props;
     />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{t(`site:title`)}</title>
     <ViewTransitions />
     <HeadHrefLangs />
   </head>
