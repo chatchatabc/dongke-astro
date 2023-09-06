@@ -1,0 +1,78 @@
+<contact-form>
+  <form class="space-y-4 text-end">
+    <label class="flex">
+      <span class="w-20 mr-2">Title:</span>
+      <input class="p-1 border w-full rounded-md shadow-inner" required />
+      <span class="text-red-500">*</span>
+    </label>
+
+    <label class="flex">
+      <span class="w-20 mr-2">Name:</span>
+      <input class="p-1 border w-full rounded-md shadow-inner" required />
+      <span class="text-red-500">*</span>
+    </label>
+
+    <label class="flex">
+      <span class="w-20 mr-2">Tel:</span>
+      <input class="p-1 border w-full rounded-md shadow-inner" required />
+      <span class="text-red-500">*</span>
+    </label>
+
+    <label class="flex">
+      <span class="w-20 mr-2">Email:</span>
+      <input class="p-1 border w-full rounded-md shadow-inner" required />
+      <span class="text-red-500">*</span>
+    </label>
+
+    <label class="flex">
+      <span class="w-20 mr-2">Content:</span>
+      <textarea class="p-1 border w-full rounded-md shadow-inner" required
+      ></textarea>
+      <span class="text-red-500">*</span>
+    </label>
+
+    <div class="flex space-x-4 justify-end">
+      <button class="px-8 py-1 text-white bg-p rounded-md hover:shadow-md">
+        Submit
+      </button>
+      <button
+        data-reset-btn
+        class="px-8 py-1 text-white bg-p rounded-md hover:shadow-md"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+</contact-form>
+
+<script>
+  class ContactForm extends HTMLElement {
+    constructor() {
+      super();
+
+      const initialSetup = () => {
+        const form = this.querySelector("form");
+        const resetBtn = this.querySelector("[data-reset-btn]");
+
+        form?.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+          console.log(data);
+        });
+
+        resetBtn?.addEventListener("click", () => {
+          form?.reset();
+        });
+      };
+
+      // Trigger initial setup on page swap
+      document.addEventListener("astro:page-swap", initialSetup);
+
+      // Trigger initial setup on first load
+      initialSetup();
+    }
+  }
+
+  customElements.define("contact-form", ContactForm);
+</script>
