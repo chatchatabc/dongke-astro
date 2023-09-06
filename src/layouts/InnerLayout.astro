@@ -53,7 +53,7 @@ const crumbs = pathsSplitted.map((slug, index) => {
       <div class="text-sm text-gray-500">
         <nav>
           <ul class="flex flex-wrap">
-            <li class="font-medium">You are here:</li>
+            <li class="font-medium hidden md:block">You are here:</li>
             {
               crumbs.map((crumb, index) => {
                 const { slug, pathname } = crumb;
@@ -62,7 +62,7 @@ const crumbs = pathsSplitted.map((slug, index) => {
                 if (translated) {
                   return (
                     <li>
-                      {index > 0 && <span>&gt;&gt;</span>}
+                      {index > 0 && <span>&gt;</span>}
                       <a
                         class="mx-1 hover:text-gray-700"
                         href={utilAddLocalePathname({ pathname })}
