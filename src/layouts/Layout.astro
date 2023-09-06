@@ -6,42 +6,56 @@ import HeaderBanner from "@components/header/HeaderBanner.astro";
 import HeaderNavigation from "@components/header/HeaderNavigation.astro";
 import { HeadHrefLangs } from "astro-i18next/components";
 import i18next, { t } from "i18next";
+import { SEO } from "astro-seo";
 
 export type LayoutProps = {
   title?: string;
+  description?: string;
+  keywords?: string;
+  author?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
 };
 
-const { title = t("site:title") } = Astro.props;
+const {
+  title = t("site:title"),
+  description = t(`site:description`),
+  keywords = t(`site:keywords`),
+  author = t(`site:author`),
+  ogTitle = t(`site:title`),
+  ogDescription = t(`site:description`),
+  ogImage = "/images/logo.png",
+} = Astro.props as LayoutProps;
 ---
 
 <!doctype html>
 <html lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={t(`site:description`)} />
-    <meta name="keywords" content={t(`site:keywords`)} />
-    <meta name="author" content={t(`site:author`)} />
     <meta name="viewport" content="width=device-width" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/logo/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/logo/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/logo/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <SEO
+      title={title!}
+      description={description!}
+      openGraph={{
+        basic: {
+          title: ogTitle!,
+          type: "website",
+          image: ogImage,
+        },
+        optional: {
+          description: ogDescription!,
+        },
+      }}
+      extend={{
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        meta: [
+          { name: "author", content: author! },
+          { name: "keywords", content: keywords! },
+        ],
+      }}
+    />
     <HeadHrefLangs />
   </head>
   <body>
