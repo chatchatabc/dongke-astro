@@ -15,7 +15,6 @@ export async function getStaticPaths() {
         }
         return acc;
     }, []);
-    console.log(newsCollectionTypes);
     return newsCollectionTypes.map((type) => {
         return {
             params: {
