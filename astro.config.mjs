@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import { astroImageTools } from "astro-imagetools";
 import astroI18next from "astro-i18next";
 import mdx from "@astrojs/mdx";
+import legacy from "@vitejs/plugin-legacy";
 
 export default defineConfig({
   site: "https://dongke.pages.dev",
@@ -10,4 +11,11 @@ export default defineConfig({
     port: 3000,
   },
   integrations: [tailwind(), astroI18next(), astroImageTools, mdx()],
+  vite: {
+    plugins: [
+      legacy({
+        targets: ["defaults", "not IE 11"],
+      }),
+    ],
+  },
 });
