@@ -42,19 +42,18 @@ const crumbs = pathsSplitted.map((slug, index) => {
   <!-- Breadcrumbs -->
   <section class="shadow-lg">
     <section class="container flex py-2 items-center">
-      <div class="w-5 h-5 mr-2 text-gray-500">
+      <div class="w-5 h-5 mr-2 text-gray-500 hidden md:block">
         <HomeIcon />
       </div>
 
-      <h2 class="text-2xl uppercase mr-auto">
+      <h2 class="text-2xl uppercase mr-auto hidden md:block">
         {bannerAlt}
       </h2>
 
-      <div class="flex items-center text-sm text-gray-500">
-        <p>You are here:</p>
-
+      <div class="text-sm text-gray-500">
         <nav>
-          <ul class="flex">
+          <ul class="flex flex-wrap">
+            <li class="font-medium">You are here:</li>
             {
               crumbs.map((crumb, index) => {
                 const { slug, pathname } = crumb;

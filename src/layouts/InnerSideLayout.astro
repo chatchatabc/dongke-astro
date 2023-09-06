@@ -27,7 +27,9 @@ const props = Astro.props as Props;
 
 <InnerLayout {...props}>
   <section class="flex container py-4">
-    <aside class="w-64 space-y-4 sticky top-20 border self-start">
+    <aside
+      class="w-64 space-y-4 sticky top-20 border self-start hidden md:block"
+    >
       <!-- Navigation -->
       <section class="rounded-t-sm overflow-hidden">
         <header class="bg-p py-2 px-4 text-white text-lg capitalize">
