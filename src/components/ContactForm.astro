@@ -67,7 +67,7 @@
       };
 
       // Trigger initial setup on page swap
-      document.addEventListener("astro:page-swap", initialSetup);
+      document.addEventListener("astro:after-swap", initialSetup);
 
       // Trigger initial setup on first load
       initialSetup();
