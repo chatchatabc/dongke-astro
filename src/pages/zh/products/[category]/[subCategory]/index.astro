@@ -55,7 +55,7 @@ const { subCategory, category } = Astro.params;
         const category = product.category[0];
         const subCategory = product.subCategory[0] ?? "all";
         return (
-          <li class="w-1/4 p-2">
+          <li class="w-1/2 p-2 lg:w-1/3 xl:w-1/4">
             <a
               href={utilAddLocalePathname({
                 pathname: `/products/${category}/${subCategory}/${product.slug}`,
@@ -70,7 +70,7 @@ const { subCategory, category } = Astro.params;
                 </div>
 
                 <figcaption class="text-center py-2 font-medium">
-                  <p>{t(`products:${product.slug}`)}</p>
+                  <p class="line-clamp-1">{t(`products:${product.slug}`)}</p>
                 </figcaption>
               </figure>
             </a>
