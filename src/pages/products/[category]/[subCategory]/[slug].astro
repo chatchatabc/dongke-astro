@@ -47,12 +47,12 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
   subtitle={subCategory === "all" ? category : subCategory}
 >
   <section class="py-4">
-    <figure class="flex">
-      <div class="w-1/2 border">
+    <figure class="flex flex-wrap">
+      <div class="border w-full lg:w-1/2">
         <Img src={product.images[0]} alt={product.slug} />
       </div>
 
-      <figcaption class="px-4">
+      <figcaption class="mt-2 lg:mt-0 lg:px-4">
         <header class="pb-2 border-b border-dashed border-p">
           <h3 class="text-p text-2xl">{t(`products:${product.slug}`)}</h3>
         </header>
@@ -75,7 +75,7 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
           <p>Price may vary online, in stores</p>
         </section>
 
-        <footer class="mt-16 text-lg font-medium">
+        <footer class="text-lg font-medium mt-8 lg:mt-16">
           <header>
             <h4>Contact us:</h4>
           </header>
@@ -93,13 +93,13 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
     <header class="flex text-lg">
       <button
         data-product-desc-btn
-        class="border-x border-t px-4 py-2 transition hover:text-p"
+        class="border-x border-t px-4 py-2 transition w-1/2 lg:w-[unset] hover:text-p"
       >
         Product Description
       </button>
       <button
         data-product-inq-btn
-        class="border-x border-t px-4 py-2 transition hover:text-p"
+        class="border-x border-t px-4 py-2 transition w-1/2 lg:w-[unset] hover:text-p"
       >
         Make an inquiry
       </button>
