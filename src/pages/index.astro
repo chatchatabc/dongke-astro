@@ -83,4 +83,72 @@ const protectionProducts = [
       </figcaption>
     </figure>
   </section>
+
+  <section class="bg-gray-100 py-8">
+    <section class="flex container">
+      <aside class="w-72 flex flex-col">
+        <header class="text-center bg-p p-2 text-white">
+          <span class="text-7xl">D.K.</span>
+          <h2 class="text-xl uppercase">PRODUCT CATEGORIES</h2>
+        </header>
+
+        <section class="border-x border-b flex-1">
+          <ul class="px-2 py-4 space-y-2">
+            {
+              productCategories.map((productCategory) => {
+                const { name, pathname } = productCategory;
+                return (
+                  <li>
+                    <a
+                      class="px-4 py-2 block bg-slate-700 text-white rounded-md transition hover:bg-p"
+                      href={utilAddLocalePathname({ pathname })}
+                    >
+                      {t(name)}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </section>
+      </aside>
+
+      <section class="flex-1 px-4 space-y-4">
+        <section>
+          <Img src="/images/home/product-1.jpeg" alt="product-1" />
+        </section>
+
+        <ul class="flex space-x-4">
+          {
+            protectionProducts.map((product) => {
+              const name = t(`${product.name}`);
+
+              return (
+                <li class="w-1/4">
+                  <figure>
+                    <div>
+                      <Img src={product.imgSrc} alt={name} />
+                    </div>
+
+                    <figcaption class="text-center mt-4">
+                      <p>{name}</p>
+
+                      <footer class="mt-2">
+                        <button class="flex px-4 py-0.5 border-gray-400 mx-auto items-center space-x-2 border rounded-md transition hover:text-p">
+                          <div class="w-5 h-5">
+                            <EyeIcon />
+                          </div>
+                          <span>Detail</span>
+                        </button>
+                      </footer>
+                    </figcaption>
+                  </figure>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </section>
+    </section>
+  </section>
 </Layout>
