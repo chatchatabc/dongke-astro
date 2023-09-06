@@ -89,15 +89,23 @@ astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
     constructor() {
       super();
 
-      const button = this.querySelector("button")!;
-      const children = this.querySelector("[data-children]")!;
+      const initialSetup = () => {
+        const button = this.querySelector("button");
+        const children = this.querySelector("[data-children]");
 
-      button.addEventListener("click", () => {
-        button.classList.toggle("rotate-180");
-        children.classList.toggle("grid-rows-[1fr]");
-        children.classList.toggle("grid-rows-[0fr]");
-        children.classList.toggle("border-t");
-      });
+        button?.addEventListener("click", () => {
+          button?.classList.toggle("rotate-180");
+          children?.classList.toggle("grid-rows-[1fr]");
+          children?.classList.toggle("grid-rows-[0fr]");
+          children?.classList.toggle("border-t");
+        });
+      };
+
+      // Trigger initial setup on page swap
+      document.addEventListener("astro:page-swap", initialSetup);
+
+      // Trigger initial setup on first load
+      initialSetup();
     }
   }
 
