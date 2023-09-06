@@ -33,8 +33,10 @@ const crumbs = pathsSplitted.map((slug, index) => {
 
 <Layout>
   <!-- Content banner -->
-  <section>
-    <Img src={bannerSrc} alt={bannerAlt} />
+  <section class="min-h-[25vh] relative">
+    <div class="absolute w-full h-full lg:relative">
+      <Img objectFit="cover" src={bannerSrc} alt={bannerAlt} />
+    </div>
   </section>
 
   <!-- Breadcrumbs -->
