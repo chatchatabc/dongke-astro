@@ -31,6 +31,7 @@ const protectionProducts = [
         imgSrc: "/images/products/face-shields/kids-face-shield-1.jpeg",
     },
 ];
+const products = productsJson.contents;
 ---
 
 <Layout>
@@ -149,6 +150,43 @@ const protectionProducts = [
           }
         </ul>
       </section>
+    </section>
+  </section>
+
+  <section class="container py-8">
+    <header>
+      <h2 class="text-4xl text-p text-center font-bold">Product List</h2>
+    </header>
+
+    <section class="mt-4">
+      <ul class="flex flex-wrap">
+        {
+          [...products].splice(0, 8).map((product) => {
+            const category = product.category[0];
+            const subCategory = product.subCategory[0] ?? "all";
+            const href = utilAddLocalePathname({
+              pathname: `/products/${category}/${subCategory}/${product.slug}`,
+            });
+            const image = product.images[0];
+            const name = t(`products:${product.slug}`);
+            return (
+              <li class="w-1/4 p-2">
+                <a href={href}>
+                  <figure class="relative border transition group overflow-hidden hover:border-p">
+                    <div class="transition duration-1000 group-hover:scale-110">
+                      <Img src={image} alt={name} />
+                    </div>
+
+                    <figcaption class="absolute bg-black bg-opacity-75 p-2 w-full bottom-0">
+                      <p class="text-center text-white">{name}</p>
+                    </figcaption>
+                  </figure>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
     </section>
   </section>
 </Layout>
