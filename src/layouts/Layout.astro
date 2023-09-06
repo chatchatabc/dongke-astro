@@ -1,11 +1,9 @@
 ---
 import Footer from "@components/footer/Footer.astro";
-import FooterBottom from "@components/footer/FooterBottom.astro";
 import FooterNavigation from "@components/footer/FooterNavigation.astro";
 import Header from "@components/header/Header.astro";
 import HeaderBanner from "@components/header/HeaderBanner.astro";
 import HeaderNavigation from "@components/header/HeaderNavigation.astro";
-import { ViewTransitions } from "astro:transitions";
 import { HeadHrefLangs } from "astro-i18next/components";
 import i18next, { t } from "i18next";
 
@@ -44,7 +42,6 @@ const { title = t("site:title") } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
     <HeadHrefLangs />
   </head>
   <body>
