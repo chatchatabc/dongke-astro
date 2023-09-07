@@ -83,7 +83,15 @@ const advancedEquipments = advancedEquipmentJson.contents;
 
 <Layout>
   <section>
-    <Img src="/images/home/hero-2.jpeg" alt="hero-1" />
+    <swiper-container init="false" data-hero-carousel>
+      <swiper-slide>
+        <Img src="/images/home/hero-2.jpeg" alt="hero-2" />
+      </swiper-slide>
+
+      <swiper-slide>
+        <Img src="/images/home/hero-1.jpeg" alt="hero-1" />
+      </swiper-slide>
+    </swiper-container>
   </section>
 
   <!-- Video -->
@@ -418,3 +426,32 @@ const advancedEquipments = advancedEquipmentJson.contents;
     </section>
   </section>
 </Layout>
+
+<script>
+  import { type SwiperOptions, type Swiper } from "swiper/types";
+  // import function to register Swiper custom elements
+  import { register } from "swiper/element/bundle";
+  // register Swiper custom elements
+  register();
+
+  const heroCarousel: { swiper: Swiper; initialize: any } =
+    document.querySelector("[data-hero-carousel]") as any;
+  const heroCarouselParams: SwiperOptions = {
+    slidesPerView: 1,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    breakpoints: {
+      1024: {
+        navigation: true,
+      },
+    },
+    speed: 1000,
+    pagination: true,
+  };
+
+  // Initialize hero carousel
+  Object.assign(heroCarousel, heroCarouselParams);
+  heroCarousel.initialize();
+</script>
