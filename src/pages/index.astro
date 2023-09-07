@@ -1,7 +1,7 @@
 ---
 import { t, changeLanguage } from "i18next";
 import Layout from "@layouts/Layout.astro";
-import { Img } from "astro-imagetools/components";
+import { Img, Picture } from "astro-imagetools/components";
 import productsJson from "@data/products.json";
 import { utilAddLocalePathname } from "@services/utilService";
 import EyeIcon from "@assets/EyeIcon.astro";
@@ -41,6 +41,20 @@ const certificates = [
     "/images/about-us/certificates/06.jpeg",
     "/images/about-us/certificates/07.jpeg",
 ];
+const partners = [
+    "/images/partners/1.jpeg",
+    "/images/partners/2.jpeg",
+    "/images/partners/3.jpeg",
+    "/images/partners/4.png",
+    "/images/partners/5.png",
+    "/images/partners/6.png",
+    "/images/partners/7.png",
+    "/images/partners/8.png",
+    "/images/partners/9.png",
+    "/images/partners/10.jpeg",
+    "/images/partners/11.jpeg",
+    "/images/partners/12.png",
+];
 ---
 
 <Layout>
@@ -50,6 +64,7 @@ const certificates = [
 
   <hr class="border-dashed my-8 border-gray-300" />
 
+  <!-- About us -->
   <section class="container my-8">
     <figure class="flex">
       <div class="flex">
@@ -94,6 +109,7 @@ const certificates = [
     </figure>
   </section>
 
+  <!-- Product Categories -->
   <section class="bg-gray-100 py-8">
     <section class="flex container">
       <aside class="w-72 flex flex-col">
@@ -162,6 +178,7 @@ const certificates = [
     </section>
   </section>
 
+  <!-- Product List -->
   <section class="container py-8">
     <header>
       <h2 class="text-4xl text-p text-center font-bold">Product List</h2>
@@ -199,13 +216,14 @@ const certificates = [
     </section>
   </section>
 
+  <!-- Certificates -->
   <section class="container">
     <header class="flex items-center space-x-4">
       <div class="flex-1 border-t">
         <div class="w-1/5 border-t border-p"></div>
       </div>
       <h2 class="capitalize text-4xl text-center text-p font-bold">
-        Honor Certificate
+        Honor Certificates
       </h2>
       <div class="flex-1 border-t">
         <div class="w-1/5 border-t border-p ml-auto"></div>
@@ -219,6 +237,35 @@ const certificates = [
             return (
               <li class="flex-1">
                 <Img src={cert} alt="Certificate" />
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+  </section>
+
+  <!-- Partners -->
+  <section class="container">
+    <header class="flex items-center space-x-4">
+      <div class="flex-1 border-t">
+        <div class="w-1/5 border-t border-p"></div>
+      </div>
+      <h2 class="capitalize text-4xl text-center text-p font-bold">Partners</h2>
+      <div class="flex-1 border-t">
+        <div class="w-1/5 border-t border-p ml-auto"></div>
+      </div>
+    </header>
+
+    <section class="my-8">
+      <ul class="flex flex-wrap">
+        {
+          partners.map((partner) => {
+            return (
+              <li class="w-1/6 p-2">
+                <div class="border">
+                  <Picture src={partner} alt="Certificate" />
+                </div>
               </li>
             );
           })
