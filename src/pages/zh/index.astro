@@ -146,22 +146,22 @@ const advancedEquipments = advancedEquipmentJson.contents;
 
   <!-- Product Categories -->
   <section class="bg-gray-100 py-8">
-    <section class="flex container">
-      <aside class="w-72 flex flex-col">
+    <section class="flex flex-wrap container">
+      <aside class="flex flex-col w-full lg:w-72">
         <header class="text-center bg-p p-2 text-white">
           <span class="text-7xl">D.K.</span>
           <h2 class="text-xl uppercase">PRODUCT CATEGORIES</h2>
         </header>
 
         <section class="border-x border-b flex-1">
-          <ul class="px-2 py-4 space-y-2">
+          <ul class="px-2 py-4 flex flex-wrap lg:space-y-2">
             {
               productCategories.map((productCategory) => {
                 const { name, pathname } = productCategory;
                 return (
-                  <li>
+                  <li class="w-1/2 p-1 flex lg:w-full">
                     <a
-                      class="px-4 py-2 block bg-slate-700 text-white rounded-md transition hover:bg-p"
+                      class="px-4 py-2 flex items-center w-full bg-slate-700 text-white rounded-md transition hover:bg-p"
                       href={utilAddLocalePathname({ pathname })}
                     >
                       {t(name)}
@@ -174,18 +174,18 @@ const advancedEquipments = advancedEquipmentJson.contents;
         </section>
       </aside>
 
-      <section class="flex-1 px-4 space-y-4">
+      <section class="flex-1 space-y-4 mt-4 lg:mt-0 lg:px-4">
         <section>
           <Img src="/images/home/product-1.jpeg" alt="product-1" />
         </section>
 
-        <ul class="flex space-x-4">
+        <ul class="flex flex-wrap -mx-2 overflow-hidden">
           {
             protectionProducts.map((product) => {
               const name = t(`${product.name}`);
 
               return (
-                <li class="w-1/4">
+                <li class="p-2 w-1/2 md:w-1/4">
                   <figure>
                     <div>
                       <Img src={product.imgSrc} alt={`Picture of ${name}`} />
