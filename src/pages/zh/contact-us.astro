@@ -15,23 +15,23 @@ changeLanguage("zh");
 const contacts = [
     {
         Icon: UserIcon,
-        text: `Contact: ${contactUsJson.contact}`,
+        text: `${t("contact")}: ${contactUsJson.contact}`,
     },
     {
         Icon: MobileIcon,
-        text: `Mobile: ${contactUsJson.liao}`,
+        text: `${t("mobile")}: ${contactUsJson.liao}`,
     },
     {
         Icon: EmailIcon,
-        text: `Email: ${contactUsJson.email}`,
+        text: `${t("email")}: ${contactUsJson.email}`,
     },
     {
         Icon: WhatsAppIcon,
-        text: `Whatsapp: ${contactUsJson.whatsApp}`,
+        text: `WhatsApp: ${contactUsJson.whatsApp}`,
     },
     {
         Icon: LocationIcon,
-        text: `Address: ${contactUsJson.address}`,
+        text: `${t("address")}: ${contactUsJson.address}`,
     },
 ];
 ---
@@ -66,17 +66,14 @@ const contacts = [
 
     <!-- Right -->
     <section class="w-full mt-8 lg:mt-0 lg:w-1/2">
-      <header
-        class="flex px-4 py-2 rounded-lg bg-gray-100 items-center justify-evenly"
-      >
+      <header class="flex px-8 py-2 rounded-lg bg-gray-100 items-center">
         <div class="w-12 h-12">
           <WriteIcon />
         </div>
 
         <div class="pl-2">
           <p>
-            Please submit your basic information, we will contact you as soon as
-            possible!
+            {t("contact-form-title")}
           </p>
         </div>
       </header>
