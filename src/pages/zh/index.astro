@@ -5,6 +5,7 @@ import { Img, Picture } from "astro-imagetools/components";
 import productsJson from "@data/products.json";
 import { utilAddLocalePathname } from "@services/utilService";
 import EyeIcon from "@assets/EyeIcon.astro";
+import advancedEquipmentJson from "@data/advanced-equipment.json";
 
 changeLanguage("zh");
 
@@ -77,6 +78,7 @@ const automations = [
         desc: "Products through the United States LM-80, SGS, ISO9001, EN62471 Blu-ray hazards such as testing and certification, all product quality guarantee for the following year;",
     },
 ];
+const advancedEquipments = advancedEquipmentJson.contents;
 ---
 
 <Layout>
@@ -382,6 +384,34 @@ const automations = [
           </ul>
         </figcaption>
       </figure>
+    </section>
+  </section>
+
+  <section class="container my-8">
+    <header class="flex items-center space-x-4">
+      <div class="flex-1 border-t">
+        <div class="w-1/5 border-t border-p"></div>
+      </div>
+      <h2 class="capitalize text-4xl text-center text-p font-bold">
+        Advanced Equipment
+      </h2>
+      <div class="flex-1 border-t">
+        <div class="w-1/5 border-t border-p ml-auto"></div>
+      </div>
+    </header>
+
+    <section class="mt-8">
+      <ul class="flex space-x-4">
+        {
+          [...advancedEquipments].splice(0, 5).map((equipment) => {
+            return (
+              <li>
+                <Img src={equipment.src} alt={equipment.name} />
+              </li>
+            );
+          })
+        }
+      </ul>
     </section>
   </section>
 </Layout>
