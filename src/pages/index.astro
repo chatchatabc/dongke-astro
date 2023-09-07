@@ -88,17 +88,17 @@ const advancedEquipments = advancedEquipmentJson.contents;
 <Layout>
   <section class="relative">
     <swiper-container init="false" data-hero-carousel>
-      <swiper-slide>
+      <swiper-slide lazy="true">
         <Img src="/images/home/hero-2.jpeg" alt="hero-2" />
       </swiper-slide>
 
-      <swiper-slide>
+      <swiper-slide lazy="true">
         <Img src="/images/home/hero-1.jpeg" alt="hero-1" />
       </swiper-slide>
     </swiper-container>
 
     <section
-      class="container left-0 right-0 absolute z-[1] top-1/2 w-full -translate-y-1/2 flex justify-between"
+      class="hidden container left-0 right-0 absolute z-[1] top-1/2 w-full -translate-y-1/2 justify-between lg:flex"
     >
       <button
         data-hero-carousel-prev
