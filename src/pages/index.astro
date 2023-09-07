@@ -345,7 +345,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
   <section class="container my-4">
     <header class="flex justify-center items-center space-x-4">
       <div class="w-24 border-t-2 border-gray-500"></div>
-      <h2 class="text-4xl text-p font-bold">
+      <h2 class="text-4xl text-center text-p font-bold">
         The highest degree of automation
       </h2>
       <div class="w-24 border-t-2 border-gray-500"></div>
@@ -356,12 +356,14 @@ const advancedEquipments = advancedEquipmentJson.contents;
     </p>
 
     <section class="mt-8">
-      <figure class="flex space-x-4">
-        <div class="w-1/2">
+      <figure class="flex flex-wrap">
+        <div class="w-full lg:w-1/2">
           <Img src="/images/automations/07.jpeg" alt="automation" />
         </div>
 
-        <figcaption class="w-1/2 text-sm space-y-2">
+        <figcaption
+          class="w-full mt-4 text-sm space-y-2 lg:pl-8 lg:mt-0 lg:w-1/2"
+        >
           <p class="text-center">Production technology management system</p>
 
           <ul class="space-y-4">
@@ -369,7 +371,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
               automations.map((automation) => {
                 return (
                   <li>
-                    <figure class="px-4 py-2 border-2 flex space-x-4">
+                    <figure class="px-4 py-2 border-2 flex space-x-4 items-center">
                       <div class="rounded-full flex items-center justify-center text-white bg-p w-16 h-16">
                         <p class="font-bold">{automation.name}</p>
                       </div>
