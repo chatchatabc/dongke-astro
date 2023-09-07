@@ -220,7 +220,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
     </header>
 
     <section class="mt-4">
-      <ul class="flex flex-wrap">
+      <ul class="flex flex-wrap -mx-2 overflow-hidden">
         {
           [...products].splice(0, 8).map((product) => {
             const category = product.category[0];
@@ -231,7 +231,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
             const image = product.images[0];
             const name = t(`products:${product.slug}`);
             return (
-              <li class="w-1/4 p-2">
+              <li class="p-2 w-1/2 md:w-1/3 lg:w-1/4">
                 <a href={href}>
                   <figure class="relative border transition group overflow-hidden hover:border-p">
                     <div class="transition duration-1000 group-hover:scale-110">
