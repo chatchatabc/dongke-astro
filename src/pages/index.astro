@@ -90,6 +90,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
   <section class="my-8 container">
     <div class="relative pb-[50%]">
       <iframe
+        title="Donge Introduction Video"
         class="w-full h-full absolute"
         src="https://player.youku.com/embed/XNTg4NTI2MDc5Ng=="
         'allowfullscreen'></iframe>
@@ -105,7 +106,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
         <div class="w-4 border-l-2 border-t-2 border-gray-500"></div>
 
         <header class="self-center text-p font-bold text-center">
-          <h3 class="text-5xl">ABOUT</h3>
+          <h2 class="text-5xl">ABOUT</h2>
           <p class="text-2xl">DONGKE</p>
         </header>
 
@@ -187,7 +188,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
                 <li class="w-1/4">
                   <figure>
                     <div>
-                      <Img src={product.imgSrc} alt={name} />
+                      <Img src={product.imgSrc} alt={`Picture of ${name}`} />
                     </div>
 
                     <figcaption class="text-center mt-4">
@@ -234,7 +235,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
                 <a href={href}>
                   <figure class="relative border transition group overflow-hidden hover:border-p">
                     <div class="transition duration-1000 group-hover:scale-110">
-                      <Img src={image} alt={name} />
+                      <Img src={image} alt={`Picture of ${name}`} />
                     </div>
 
                     <figcaption class="absolute bg-black bg-opacity-75 p-2 w-full bottom-0">
