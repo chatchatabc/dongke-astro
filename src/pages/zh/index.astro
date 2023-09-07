@@ -59,22 +59,22 @@ const partners = [
 const automations = [
     {
         name: "design",
-        imgSrc: "/images/automations/design.png",
+        imgSrc: "/images/automations/design.jpeg",
         desc: "Design and development of products, packaging, printing, etc. The company has a professional design team, with more than 10 years of design experience, can provide customers with ...",
     },
     {
         name: "print",
-        imgSrc: "/images/automations/print.png",
+        imgSrc: "/images/automations/print.jpeg",
         desc: "As a national high-tech enterprise, the company is equipped with professional pre-sales and post-sales personnel to provide one-stop technical support services.",
     },
     {
         name: "cut",
-        imgSrc: "/images/automations/die-cut.png",
+        imgSrc: "/images/automations/die-cut.jpeg",
         desc: "The company has more than 5,000 square meters of dust-free workshops, more than 100 automated equipment, professional R & D personnel more than 20, the performance and advantages o...",
     },
     {
         name: "glue",
-        imgSrc: "/images/automations/glue.png",
+        imgSrc: "/images/automations/glue.jpeg",
         desc: "Products through the United States LM-80, SGS, ISO9001, EN62471 Blu-ray hazards such as testing and certification, all product quality guarantee for the following year;",
     },
 ];
@@ -366,7 +366,20 @@ const advancedEquipments = advancedEquipmentJson.contents;
     <section class="mt-8">
       <figure class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
-          <Img src="/images/automations/07.jpeg" alt="automation" />
+          <swiper-container init="false" data-automation-carousel>
+            {
+              automations.map((automation) => {
+                return (
+                  <swiper-slide>
+                    <Img
+                      src={automation.imgSrc}
+                      alt={`Picture of ${automation.name}`}
+                    />
+                  </swiper-slide>
+                );
+              })
+            }
+          </swiper-container>
         </div>
 
         <figcaption
@@ -474,6 +487,16 @@ const advancedEquipments = advancedEquipmentJson.contents;
     },
   };
 
+  const automationCarousel: { swiper: Swiper; initialize: any } =
+    document.querySelector("[data-automation-carousel]") as any;
+  const automationCarouselParams: SwiperOptions = {
+    slidesPerView: 1,
+    autoplay: {
+      delay: 2000,
+    },
+    loop: true,
+  };
+
   // Initialize hero carousel
   Object.assign(heroCarousel, heroCarouselParams);
   heroCarousel.initialize();
@@ -481,4 +504,8 @@ const advancedEquipments = advancedEquipmentJson.contents;
   // Initialize equipment carousel
   Object.assign(equipmentCarousel, equipmentCarouselParams);
   equipmentCarousel.initialize();
+
+  // Initialize automation carousel
+  Object.assign(automationCarousel, automationCarouselParams);
+  automationCarousel.initialize();
 </script>
