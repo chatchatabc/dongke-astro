@@ -11,72 +11,72 @@ changeLanguage("en");
 
 const productCategories = productsJson.navlinks;
 const protectionProducts = [
-  {
-    name: "face-shields",
-    href: "/products/full-face-shields",
-    imgSrc: "/images/products/full-face-shields/1.jpeg",
-  },
-  {
-    name: "kids-goggles",
-    href: "/products/kids-goggles",
-    imgSrc: "/images/products/kids-goggles/kids-goggles-1.jpeg",
-  },
-  {
-    name: "adult-goggles",
-    href: "/products/adult-goggles",
-    imgSrc: "/images/products/adult-goggles/adult-goggles-1.jpeg",
-  },
-  {
-    name: "kids-face-shields",
-    href: "/products/kids-face-shields",
-    imgSrc: "/images/products/face-shields/kids-face-shield-1.jpeg",
-  },
+    {
+        name: "face-shields",
+        href: "/products/full-face-shields",
+        imgSrc: "/images/products/full-face-shields/1.jpeg",
+    },
+    {
+        name: "kids-goggles",
+        href: "/products/kids-goggles",
+        imgSrc: "/images/products/kids-goggles/kids-goggles-1.jpeg",
+    },
+    {
+        name: "adult-goggles",
+        href: "/products/adult-goggles",
+        imgSrc: "/images/products/adult-goggles/adult-goggles-1.jpeg",
+    },
+    {
+        name: "kids-face-shields",
+        href: "/products/kids-face-shields",
+        imgSrc: "/images/products/face-shields/kids-face-shield-1.jpeg",
+    },
 ];
 const products = productsJson.contents;
 const certificates = [
-  "/images/about-us/certificates/01.jpg",
-  "/images/about-us/certificates/02.jpg",
-  "/images/about-us/certificates/03.jpg",
-  "/images/about-us/certificates/04.jpg",
-  "/images/about-us/certificates/05.jpeg",
-  "/images/about-us/certificates/06.jpeg",
-  "/images/about-us/certificates/07.jpeg",
+    "/images/about-us/certificates/01.jpg",
+    "/images/about-us/certificates/02.jpg",
+    "/images/about-us/certificates/03.jpg",
+    "/images/about-us/certificates/04.jpg",
+    "/images/about-us/certificates/05.jpeg",
+    "/images/about-us/certificates/06.jpeg",
+    "/images/about-us/certificates/07.jpeg",
 ];
 const partners = [
-  "/images/partners/1.jpeg",
-  "/images/partners/2.jpeg",
-  "/images/partners/3.jpeg",
-  "/images/partners/4.png",
-  "/images/partners/5.png",
-  "/images/partners/6.png",
-  "/images/partners/7.png",
-  "/images/partners/8.png",
-  "/images/partners/9.png",
-  "/images/partners/10.jpeg",
-  "/images/partners/11.jpeg",
-  "/images/partners/12.png",
+    "/images/partners/1.jpeg",
+    "/images/partners/2.jpeg",
+    "/images/partners/3.jpeg",
+    "/images/partners/4.png",
+    "/images/partners/5.png",
+    "/images/partners/6.png",
+    "/images/partners/7.png",
+    "/images/partners/8.png",
+    "/images/partners/9.png",
+    "/images/partners/10.jpeg",
+    "/images/partners/11.jpeg",
+    "/images/partners/12.png",
 ];
 const automations = [
-  {
-    name: "design",
-    imgSrc: "/images/automations/design.png",
-    desc: "Design and development of products, packaging, printing, etc. The company has a professional design team, with more than 10 years of design experience, can provide customers with ...",
-  },
-  {
-    name: "print",
-    imgSrc: "/images/automations/print.png",
-    desc: "As a national high-tech enterprise, the company is equipped with professional pre-sales and post-sales personnel to provide one-stop technical support services.",
-  },
-  {
-    name: "cut",
-    imgSrc: "/images/automations/die-cut.png",
-    desc: "The company has more than 5,000 square meters of dust-free workshops, more than 100 automated equipment, professional R & D personnel more than 20, the performance and advantages o...",
-  },
-  {
-    name: "glue",
-    imgSrc: "/images/automations/glue.png",
-    desc: "Products through the United States LM-80, SGS, ISO9001, EN62471 Blu-ray hazards such as testing and certification, all product quality guarantee for the following year;",
-  },
+    {
+        name: "design",
+        imgSrc: "/images/automations/design.png",
+        desc: "Design and development of products, packaging, printing, etc. The company has a professional design team, with more than 10 years of design experience, can provide customers with ...",
+    },
+    {
+        name: "print",
+        imgSrc: "/images/automations/print.png",
+        desc: "As a national high-tech enterprise, the company is equipped with professional pre-sales and post-sales personnel to provide one-stop technical support services.",
+    },
+    {
+        name: "cut",
+        imgSrc: "/images/automations/die-cut.png",
+        desc: "The company has more than 5,000 square meters of dust-free workshops, more than 100 automated equipment, professional R & D personnel more than 20, the performance and advantages o...",
+    },
+    {
+        name: "glue",
+        imgSrc: "/images/automations/glue.png",
+        desc: "Products through the United States LM-80, SGS, ISO9001, EN62471 Blu-ray hazards such as testing and certification, all product quality guarantee for the following year;",
+    },
 ];
 const advancedEquipments = advancedEquipmentJson.contents;
 ---
@@ -414,7 +414,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
     <section class="mt-8">
       <swiper-container init="false" data-equipment-carousel>
         {
-          advancedEquipments.map((equipment) => {
+          [...advancedEquipments, ...advancedEquipments].map((equipment) => {
             return (
               <swiper-slide>
                 <Img src={equipment.src} alt={equipment.name} />
@@ -456,10 +456,10 @@ const advancedEquipments = advancedEquipmentJson.contents;
     document.querySelector("[data-equipment-carousel]") as any;
   const equipmentCarouselParams: SwiperOptions = {
     slidesPerView: 2,
-    loop: true,
     autoplay: {
       delay: 2000,
     },
+    loop: true,
     spaceBetween: 12,
     breakpoints: {
       768: {
