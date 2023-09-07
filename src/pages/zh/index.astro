@@ -489,7 +489,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
       </div>
     </header>
 
-    <section class="mt-8">
+    <section class="mt-8 relative">
       <swiper-container init="false" data-equipment-carousel>
         {
           [...advancedEquipments, ...advancedEquipments].map((equipment) => {
@@ -501,6 +501,24 @@ const advancedEquipments = advancedEquipmentJson.contents;
           })
         }
       </swiper-container>
+
+      <section
+        class="hidden px-4 absolute z-[1] top-1/2 w-full -translate-y-1/2 justify-between lg:flex"
+      >
+        <button
+          data-equipment-carousel-prev
+          class="bg-gray-900 text-white w-12 -rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+        >
+          <CaretIcon />
+        </button>
+
+        <button
+          data-equipment-carousel-next
+          class="bg-gray-900 text-white w-12 rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+        >
+          <CaretIcon />
+        </button>
+      </section>
     </section>
   </section>
 </Layout>
@@ -538,6 +556,10 @@ const advancedEquipments = advancedEquipmentJson.contents;
     },
     loop: true,
     spaceBetween: 12,
+    navigation: {
+      nextEl: "[data-equipment-carousel-next]",
+      prevEl: "[data-equipment-carousel-prev]",
+    },
     breakpoints: {
       768: {
         slidesPerView: 3,
