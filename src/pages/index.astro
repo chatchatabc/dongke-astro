@@ -32,6 +32,12 @@ const protectionProducts = [
         imgSrc: "/images/products/face-shields/kids-face-shield-1.jpeg",
     },
 ];
+const categoryImages = [
+    "/images/home/category-1.jpeg",
+    "/images/home/category-2.jpeg",
+    "/images/home/category-3.jpeg",
+    "/images/home/category-4.jpeg",
+];
 const products = productsJson.contents;
 const certificates = [
     "/images/about-us/certificates/01.jpg",
@@ -182,9 +188,19 @@ const advancedEquipments = advancedEquipmentJson.contents;
         </section>
       </aside>
 
-      <section class="flex-1 space-y-4 mt-4 lg:mt-0 lg:px-4">
+      <section class="flex-1 w-1/2 space-y-4 mt-4 lg:mt-0 lg:px-4">
         <section>
-          <Img src="/images/home/product-1.jpeg" alt="product-1" />
+          <swiper-container init="false" data-category-carousel>
+            {
+              categoryImages.map((image) => {
+                return (
+                  <swiper-slide>
+                    <Img src={image} alt="Category" />
+                  </swiper-slide>
+                );
+              })
+            }
+          </swiper-container>
         </section>
 
         <ul class="flex flex-wrap -mx-2 overflow-hidden">
@@ -518,6 +534,16 @@ const advancedEquipments = advancedEquipmentJson.contents;
     },
   };
 
+  const categoryCarousel: { swiper: Swiper; initialize: any } =
+    document.querySelector("[data-category-carousel]") as any;
+  const categoryCarouselParams: SwiperOptions = {
+    slidesPerView: 1,
+    autoplay: {
+      delay: 2000,
+    },
+    loop: true,
+  };
+
   // Initialize hero carousel
   Object.assign(heroCarousel, heroCarouselParams);
   heroCarousel.initialize();
@@ -533,4 +559,8 @@ const advancedEquipments = advancedEquipmentJson.contents;
   // Initialize certificate carousel
   Object.assign(certificateCarousel, certificateCarouselParams);
   certificateCarousel.initialize();
+
+  // Initialize category carousel
+  Object.assign(categoryCarousel, categoryCarouselParams);
+  categoryCarousel.initialize();
 </script>
