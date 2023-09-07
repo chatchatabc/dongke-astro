@@ -55,6 +55,28 @@ const partners = [
     "/images/partners/11.jpeg",
     "/images/partners/12.png",
 ];
+const automations = [
+    {
+        name: "design",
+        imgSrc: "/images/automations/design.png",
+        desc: "Design and development of products, packaging, printing, etc. The company has a professional design team, with more than 10 years of design experience, can provide customers with ...",
+    },
+    {
+        name: "print",
+        imgSrc: "/images/automations/print.png",
+        desc: "As a national high-tech enterprise, the company is equipped with professional pre-sales and post-sales personnel to provide one-stop technical support services.",
+    },
+    {
+        name: "cut",
+        imgSrc: "/images/automations/die-cut.png",
+        desc: "The company has more than 5,000 square meters of dust-free workshops, more than 100 automated equipment, professional R & D personnel more than 20, the performance and advantages o...",
+    },
+    {
+        name: "glue",
+        imgSrc: "/images/automations/glue.png",
+        desc: "Products through the United States LM-80, SGS, ISO9001, EN62471 Blu-ray hazards such as testing and certification, all product quality guarantee for the following year;",
+    },
+];
 ---
 
 <Layout>
@@ -314,5 +336,52 @@ const partners = [
       </p>
     </div>
     <Img src="/images/ad.jpg" alt="ad" />
+  </section>
+
+  <!-- Automations -->
+  <section class="container my-4">
+    <header class="flex justify-center items-center space-x-4">
+      <div class="w-24 border-t-2 border-gray-500"></div>
+      <h2 class="text-4xl text-p font-bold">
+        The highest degree of automation
+      </h2>
+      <div class="w-24 border-t-2 border-gray-500"></div>
+    </header>
+
+    <p class="text-lg text-center">
+      German 7C+1HEIDELBERG printing machines, Automatic die-cutting machines
+    </p>
+
+    <section class="mt-8">
+      <figure class="flex space-x-4">
+        <div class="w-1/2">
+          <Img src="/images/automations/07.jpeg" alt="automation" />
+        </div>
+
+        <figcaption class="w-1/2 text-sm space-y-2">
+          <p class="text-center">Production technology management system</p>
+
+          <ul class="space-y-4">
+            {
+              automations.map((automation) => {
+                return (
+                  <li>
+                    <figure class="px-4 py-2 border-2 flex space-x-4">
+                      <div class="rounded-full text-white bg-p w-16 h-16">
+                        {automation.name}
+                      </div>
+
+                      <figcaption class="flex-1">
+                        <p>{automation.desc}</p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </figcaption>
+      </figure>
+    </section>
   </section>
 </Layout>
