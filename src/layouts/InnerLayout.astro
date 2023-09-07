@@ -53,7 +53,7 @@ const crumbs = pathsSplitted.map((slug, index) => {
       <div class="text-sm text-gray-500">
         <nav>
           <ul class="flex flex-wrap">
-            <li class="font-medium hidden md:block">You are here:</li>
+            <li class="font-medium hidden md:block">{t("you-are-here")}:</li>
             {
               crumbs.map((crumb, index) => {
                 const { slug, pathname } = crumb;
