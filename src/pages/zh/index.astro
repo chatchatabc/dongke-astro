@@ -274,17 +274,17 @@ const advancedEquipments = advancedEquipmentJson.contents;
     </header>
 
     <section class="my-8">
-      <ul class="flex space-x-4">
+      <swiper-container init="false" data-certificate-carousel>
         {
           certificates.map((cert) => {
             return (
-              <li class="flex-1">
+              <swiper-slide>
                 <Img src={cert} alt="Certificate" />
-              </li>
+              </swiper-slide>
             );
           })
         }
-      </ul>
+      </swiper-container>
     </section>
   </section>
 
@@ -472,17 +472,16 @@ const advancedEquipments = advancedEquipmentJson.contents;
     autoplay: {
       delay: 2000,
     },
-    loop: true,
     spaceBetween: 12,
     breakpoints: {
       768: {
         slidesPerView: 3,
       },
       1024: {
-        slidesPerView: 4,
+        slidesPerView: 5,
       },
       1440: {
-        slidesPerView: 5,
+        slidesPerView: 7,
       },
     },
   };
@@ -497,6 +496,27 @@ const advancedEquipments = advancedEquipmentJson.contents;
     loop: true,
   };
 
+  const certificateCarousel: { swiper: Swiper; initialize: any } =
+    document.querySelector("[data-certificate-carousel]") as any;
+  const certificateCarouselParams: SwiperOptions = {
+    slidesPerView: 2,
+    autoplay: {
+      delay: 2000,
+    },
+    spaceBetween: 12,
+    breakpoints: {
+      768: {
+        slidesPerView: 4,
+      },
+      1024: {
+        slidesPerView: 5,
+      },
+      1440: {
+        slidesPerView: 7,
+      },
+    },
+  };
+
   // Initialize hero carousel
   Object.assign(heroCarousel, heroCarouselParams);
   heroCarousel.initialize();
@@ -508,4 +528,8 @@ const advancedEquipments = advancedEquipmentJson.contents;
   // Initialize automation carousel
   Object.assign(automationCarousel, automationCarouselParams);
   automationCarousel.initialize();
+
+  // Initialize certificate carousel
+  Object.assign(certificateCarousel, certificateCarouselParams);
+  certificateCarousel.initialize();
 </script>
