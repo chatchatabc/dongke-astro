@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import { Img } from "astro-imagetools/components";
 import i18next, { t, changeLanguage } from "i18next";
 import contactUsJson from "@data/contact-us.json";
+import ContactForm from "@components/ContactForm.astro";
 
 changeLanguage("zh");
 
@@ -107,7 +108,9 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
 
     <section class="border p-2">
       <!-- Inquiry -->
-      <section data-product-inq-container class="transition">Inquiry</section>
+      <section data-product-inq-container class="transition">
+        <ContactForm />
+      </section>
 
       <section data-product-desc-container class="transition prose max-w-none">
         {DescriptionContent && <DescriptionContent />}
