@@ -8,6 +8,7 @@ import {
   utilAddLocalePathname,
   utilRemoveLocalePathname,
 } from "@services/utilService";
+import { t } from "i18next";
 
 const { pathname } = Astro.url;
 
@@ -57,7 +58,7 @@ const links = [
 <section class="bg-[#333] text-white py-2 text-sm hidden lg:block">
   <div class="container flex justify-between items-center">
     <!-- Left -->
-    <p>Welcome to Dongke (Shenzhen) Industrial Development Co.,Ltd.</p>
+    <p>{t("site:welcome")}</p>
 
     <!-- Right -->
     <div class="flex space-x-4">
