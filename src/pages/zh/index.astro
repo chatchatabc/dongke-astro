@@ -410,7 +410,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
 
     <section class="mt-8">
       <figure class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
+        <div class="w-full relative lg:w-1/2">
           <swiper-container init="false" data-automation-carousel>
             {
               automations.map((automation) => {
@@ -425,6 +425,24 @@ const advancedEquipments = advancedEquipmentJson.contents;
               })
             }
           </swiper-container>
+
+          <section
+            class="hidden px-4 absolute z-[1] top-1/2 w-full -translate-y-1/2 justify-between lg:flex"
+          >
+            <button
+              data-automation-carousel-prev
+              class="bg-gray-900 text-white w-12 -rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+            >
+              <CaretIcon />
+            </button>
+
+            <button
+              data-automation-carousel-next
+              class="bg-gray-900 text-white w-12 rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+            >
+              <CaretIcon />
+            </button>
+          </section>
         </div>
 
         <figcaption
@@ -541,6 +559,11 @@ const advancedEquipments = advancedEquipmentJson.contents;
       delay: 2000,
     },
     loop: true,
+    pagination: true,
+    navigation: {
+      nextEl: "[data-automation-carousel-next]",
+      prevEl: "[data-automation-carousel-prev]",
+    },
   };
 
   const certificateCarousel: { swiper: Swiper; initialize: any } =
