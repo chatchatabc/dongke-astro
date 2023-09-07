@@ -196,7 +196,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
       </aside>
 
       <section class="flex-1 w-1/2 space-y-4 mt-4 lg:mt-0 lg:px-4">
-        <section>
+        <section class="relative">
           <swiper-container init="false" data-category-carousel>
             {
               categoryImages.map((image) => {
@@ -208,6 +208,24 @@ const advancedEquipments = advancedEquipmentJson.contents;
               })
             }
           </swiper-container>
+
+          <section
+            class="hidden container left-0 right-0 absolute z-[1] top-1/2 w-full -translate-y-1/2 justify-between lg:flex"
+          >
+            <button
+              data-category-carousel-prev
+              class="bg-gray-900 text-white w-12 -rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+            >
+              <CaretIcon />
+            </button>
+
+            <button
+              data-category-carousel-next
+              class="bg-gray-900 text-white w-12 rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+            >
+              <CaretIcon />
+            </button>
+          </section>
         </section>
 
         <ul class="flex flex-wrap -mx-2 overflow-hidden">
@@ -554,6 +572,11 @@ const advancedEquipments = advancedEquipmentJson.contents;
       delay: 2000,
     },
     loop: true,
+    pagination: true,
+    navigation: {
+      nextEl: "[data-category-carousel-next]",
+      prevEl: "[data-category-carousel-prev]",
+    },
   };
 
   // Initialize hero carousel
