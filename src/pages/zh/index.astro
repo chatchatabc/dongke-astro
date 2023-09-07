@@ -7,6 +7,7 @@ import { utilAddLocalePathname } from "@services/utilService";
 import EyeIcon from "@assets/EyeIcon.astro";
 import advancedEquipmentJson from "@data/advanced-equipment.json";
 import contactUsJson from "@data/contact-us.json";
+import CaretIcon from "@assets/CaretIcon.astro";
 
 changeLanguage("zh");
 
@@ -85,7 +86,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
 ---
 
 <Layout>
-  <section>
+  <section class="relative">
     <swiper-container init="false" data-hero-carousel>
       <swiper-slide>
         <Img src="/images/home/hero-2.jpeg" alt="hero-2" />
@@ -95,6 +96,24 @@ const advancedEquipments = advancedEquipmentJson.contents;
         <Img src="/images/home/hero-1.jpeg" alt="hero-1" />
       </swiper-slide>
     </swiper-container>
+
+    <section
+      class="container left-0 right-0 absolute z-[1] top-1/2 w-full -translate-y-1/2 flex justify-between"
+    >
+      <button
+        data-hero-carousel-prev
+        class="bg-gray-900 text-white w-12 -rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+      >
+        <CaretIcon />
+      </button>
+
+      <button
+        data-hero-carousel-next
+        class="bg-gray-900 text-white w-12 rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
+      >
+        <CaretIcon />
+      </button>
+    </section>
   </section>
 
   <!-- Video -->
@@ -464,15 +483,14 @@ const advancedEquipments = advancedEquipmentJson.contents;
     loop: true,
     autoplay: {
       delay: 5000,
+      disableOnInteraction: false,
     },
     pagination: true,
-    navigation: false,
-    speed: 1000,
-    breakpoints: {
-      1024: {
-        navigation: true,
-      },
+    navigation: {
+      nextEl: "[data-hero-carousel-next]",
+      prevEl: "[data-hero-carousel-prev]",
     },
+    speed: 1000,
   };
 
   const equipmentCarousel: { swiper: Swiper; initialize: any } =
