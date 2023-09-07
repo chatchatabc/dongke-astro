@@ -6,6 +6,7 @@ import productsJson from "@data/products.json";
 import { utilAddLocalePathname } from "@services/utilService";
 import EyeIcon from "@assets/EyeIcon.astro";
 import advancedEquipmentJson from "@data/advanced-equipment.json";
+import contactUsJson from "@data/contact-us.json";
 
 changeLanguage("zh");
 
@@ -66,22 +67,18 @@ const automations = [
     {
         name: "design",
         imgSrc: "/images/automations/design.jpeg",
-        desc: "Design and development of products, packaging, printing, etc. The company has a professional design team, with more than 10 years of design experience, can provide customers with ...",
     },
     {
         name: "print",
         imgSrc: "/images/automations/print.jpeg",
-        desc: "As a national high-tech enterprise, the company is equipped with professional pre-sales and post-sales personnel to provide one-stop technical support services.",
     },
     {
         name: "cut",
         imgSrc: "/images/automations/die-cut.jpeg",
-        desc: "The company has more than 5,000 square meters of dust-free workshops, more than 100 automated equipment, professional R & D personnel more than 20, the performance and advantages o...",
     },
     {
         name: "glue",
         imgSrc: "/images/automations/glue.jpeg",
-        desc: "Products through the United States LM-80, SGS, ISO9001, EN62471 Blu-ray hazards such as testing and certification, all product quality guarantee for the following year;",
     },
 ];
 const advancedEquipments = advancedEquipmentJson.contents;
@@ -120,8 +117,8 @@ const advancedEquipments = advancedEquipmentJson.contents;
         <div class="w-4 border-l-2 border-t-2 border-gray-500"></div>
 
         <header class="self-center text-p font-bold text-center">
-          <h2 class="text-5xl">ABOUT</h2>
-          <p class="text-2xl">DONGKE</p>
+          <h2 class="text-5xl">{t("about")}</h2>
+          <p class="text-2xl">{t("dongke")}</p>
         </header>
 
         <div class="w-4 border-r-2 border-b-2 border-gray-500"></div>
@@ -130,28 +127,19 @@ const advancedEquipments = advancedEquipmentJson.contents;
       <figcaption class="flex-1 mt-8 lg:mt-0 lg:pl-8">
         <ul>
           <li>
-            1. Dongke Industrial development company is the professional PPE
-            manufacturer, and produce the first face shield in Shenzhen.
+            {t("about-details-1")}
           </li>
 
           <li>
-            2. We had donated face shields and goggles to nearly 100 hospitals
-            including Wuhan, Beijing, Shenzhen, Philippines, Spain, etc. And we
-            donate tens of thousands of face shields to refugees in the Middle
-            East.
+            {t("about-details-2")}
           </li>
 
           <li>
-            3. We have more than 20 customer service and purchasing teams，30
-            Professional QCs and more than 50 skilled worker. We could finish
-            all the orders from the clients.
+            {t("about-details-3")}
           </li>
 
           <li>
-            4. We could provide the packaging products (paper box, plastic box,
-            hagtag, adhesive tag) Looking forward to cooperating with you and
-            striving for customer orders together, Dongke will try our best to
-            help you!
+            {t("about-details-4")}
           </li>
         </ul>
       </figcaption>
@@ -164,7 +152,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
       <aside class="flex flex-col w-full lg:w-72">
         <header class="text-center bg-p p-2 text-white">
           <span class="text-7xl">D.K.</span>
-          <h2 class="text-xl uppercase">PRODUCT CATEGORIES</h2>
+          <h2 class="text-xl uppercase">{t("product-categories")}</h2>
         </header>
 
         <section class="border-x border-b flex-1">
@@ -223,7 +211,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
                           <div class="w-5 h-5">
                             <EyeIcon />
                           </div>
-                          <span>Detail</span>
+                          <span> {t("detail")}</span>
                         </button>
                       </footer>
                     </figcaption>
@@ -240,7 +228,9 @@ const advancedEquipments = advancedEquipmentJson.contents;
   <!-- Product List -->
   <section class="container py-8">
     <header>
-      <h2 class="text-4xl text-p text-center font-bold">Product List</h2>
+      <h2 class="text-4xl text-p text-center font-bold">
+        {t("product-list")}
+      </h2>
     </header>
 
     <section class="mt-4">
@@ -282,7 +272,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
         <div class="w-1/5 border-t border-p"></div>
       </div>
       <h2 class="capitalize text-4xl text-center text-p font-bold">
-        Honor Certificates
+        {t("honor-certificates")}
       </h2>
       <div class="flex-1 border-t">
         <div class="w-1/5 border-t border-p ml-auto"></div>
@@ -310,7 +300,9 @@ const advancedEquipments = advancedEquipmentJson.contents;
       <div class="flex-1 border-t">
         <div class="w-1/5 border-t border-p"></div>
       </div>
-      <h2 class="capitalize text-4xl text-center text-p font-bold">Partners</h2>
+      <h2 class="capitalize text-4xl text-center text-p font-bold">
+        {t("partners")}
+      </h2>
       <div class="flex-1 border-t">
         <div class="w-1/5 border-t border-p ml-auto"></div>
       </div>
@@ -339,27 +331,27 @@ const advancedEquipments = advancedEquipmentJson.contents;
       <p
         class="text-2xl tracking-tight absolute top-[20%] left-1/2 -translate-x-1/2"
       >
-        A beautiful packaging can determine the future of the product
+        {t("ad-title")}
       </p>
       <div
         class="border py-1 border-gray-500 px-8 absolute top-[40%] left-1/2 -translate-x-[55%]"
       >
         <p class="text-p font-bold">
-          DONGKE PROVIDES YOU WITH ONE-STOP PRODUCT PACKAGING SOLUTION
+          {t("ad-subtitle")}
         </p>
       </div>
 
       <div class="absolute left-3/4 top-1/2 -translate-y-[75%] text-center">
-        <p>Hotline</p>
-        <p class="text-p text-xl">+8613510477115</p>
-        <p>E-mail</p>
-        <p class="text-p text-xl">william@dkmedical.cn</p>
+        <p>{t("hotline")}</p>
+        <p class="text-p text-xl">+86{contactUsJson.liao}</p>
+        <p>{t("email")}</p>
+        <p class="text-p text-xl">{contactUsJson.email}</p>
       </div>
 
       <p
         class="absolute bottom-[21%] font-medium right-1/2 -translate-x-2/3 text-white"
       >
-        Let your products sell more
+        {t("ad-footer")}
       </p>
     </div>
     <Img src="/images/ad.jpg" alt="ad" />
@@ -370,13 +362,13 @@ const advancedEquipments = advancedEquipmentJson.contents;
     <header class="flex justify-center items-center space-x-4">
       <div class="w-24 border-t-2 border-gray-500"></div>
       <h2 class="text-4xl text-center text-p font-bold">
-        The highest degree of automation
+        {t("automation-title")}
       </h2>
       <div class="w-24 border-t-2 border-gray-500"></div>
     </header>
 
     <p class="text-lg text-center">
-      German 7C+1HEIDELBERG printing machines, Automatic die-cutting machines
+      {t("automation-subtitle")}
     </p>
 
     <section class="mt-8">
@@ -401,7 +393,9 @@ const advancedEquipments = advancedEquipmentJson.contents;
         <figcaption
           class="w-full mt-4 text-sm space-y-2 lg:pl-8 lg:mt-0 lg:w-1/2"
         >
-          <p class="text-center">Production technology management system</p>
+          <p class="text-center">
+            {t("production-technology-management-system")}
+          </p>
 
           <ul class="space-y-4">
             {
@@ -410,11 +404,11 @@ const advancedEquipments = advancedEquipmentJson.contents;
                   <li>
                     <figure class="px-4 py-2 border-2 flex space-x-4 items-center">
                       <div class="rounded-full flex items-center justify-center text-white bg-p w-16 h-16">
-                        <p class="font-bold">{automation.name}</p>
+                        <p class="font-bold">{t(automation.name)}</p>
                       </div>
 
                       <figcaption class="flex-1">
-                        <p>{automation.desc}</p>
+                        <p>{t(`${automation.name}-details`)}</p>
                       </figcaption>
                     </figure>
                   </li>
@@ -433,7 +427,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
         <div class="w-1/5 border-t border-p"></div>
       </div>
       <h2 class="capitalize text-4xl text-center text-p font-bold">
-        Advanced Equipment
+        {t("advanced-equipment")}
       </h2>
       <div class="flex-1 border-t">
         <div class="w-1/5 border-t border-p ml-auto"></div>
