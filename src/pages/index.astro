@@ -32,6 +32,15 @@ const protectionProducts = [
     },
 ];
 const products = productsJson.contents;
+const certificates = [
+    "/images/about-us/certificates/01.jpg",
+    "/images/about-us/certificates/02.jpg",
+    "/images/about-us/certificates/03.jpg",
+    "/images/about-us/certificates/04.jpg",
+    "/images/about-us/certificates/05.jpeg",
+    "/images/about-us/certificates/06.jpeg",
+    "/images/about-us/certificates/07.jpeg",
+];
 ---
 
 <Layout>
@@ -182,6 +191,34 @@ const products = productsJson.contents;
                     </figcaption>
                   </figure>
                 </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+  </section>
+
+  <section class="container">
+    <header class="flex items-center space-x-4">
+      <div class="flex-1 border-t">
+        <div class="w-1/5 border-t border-p"></div>
+      </div>
+      <h2 class="capitalize text-4xl text-center text-p font-bold">
+        Honor Certificate
+      </h2>
+      <div class="flex-1 border-t">
+        <div class="w-1/5 border-t border-p ml-auto"></div>
+      </div>
+    </header>
+
+    <section class="my-8">
+      <ul class="flex space-x-4">
+        {
+          certificates.map((cert) => {
+            return (
+              <li class="flex-1">
+                <Img src={cert} alt="Certificate" />
               </li>
             );
           })
