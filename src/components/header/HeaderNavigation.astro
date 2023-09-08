@@ -6,6 +6,7 @@ import {
   utilAddLocalePathname,
   utilRemoveLocalePathname,
 } from "@services/utilService";
+import CaretIcon from "@assets/CaretIcon.astro";
 
 let { pathname: astroPathname } = Astro.url;
 astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
@@ -20,25 +21,58 @@ const navLinks = navlinksJson.contents;
     <ul class="flex justify-center space-x-1">
       {
         navLinks.map((navLink) => {
-          const { name, pathname } = navLink;
+          const { name, pathname, children } = navLink;
           return (
-            <li>
+            <li class="group">
               <a
                 href={utilAddLocalePathname({ pathname })}
-                class={`flex items-center px-8 py-2 rounded-full transition ${
+                class={`flex items-center py-2 rounded-full transition ${
                   (astroPathname.startsWith(pathname) && pathname !== "/") ||
                   astroPathname === pathname
                     ? "bg-p text-white"
                     : ""
-                } hover:text-white hover:bg-p`}
+                } ${
+                  children ? "pl-8 pr-6" : "px-8"
+                } peer group-hover:text-white group-hover:bg-p`}
               >
                 {pathname === "/" && (
                   <div class="w-5 h-5 mr-2">
                     <HomeIcon />
                   </div>
                 )}
+
                 {t(name)}
+
+                {children && (
+                  <div class="w-6 h-6 transition group-hover:rotate-180">
+                    <CaretIcon />
+                  </div>
+                )}
               </a>
+
+              {children && (
+                <div class="grid grid-rows-[0fr] transition-all absolute top-full overflow-hidden duration-500 bg-white shadow rounded-b-lg hover:grid-rows-[1fr] peer-hover:grid-rows-[1fr]">
+                  <ul class="overflow-hidden">
+                    {children.map((child) => {
+                      const { name, pathname } = child;
+                      return (
+                        <li>
+                          <a
+                            href={utilAddLocalePathname({ pathname })}
+                            class={`block px-8 py-2 transition ${
+                              astroPathname === pathname
+                                ? "bg-p text-white"
+                                : ""
+                            } hover:text-white hover:bg-p`}
+                          >
+                            {t(name)}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
             </li>
           );
         })
