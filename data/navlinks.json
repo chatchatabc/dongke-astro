@@ -6,7 +6,7 @@
     },
     {
       "name": "about-us",
-      "pathname": "/about-us/company-profile",
+      "pathname": "/about-us",
       "children": [
         {
           "name": "company-profile",
@@ -30,7 +30,7 @@
         },
 
         {
-          "name": "anti-modern-slavery-and-anti-population-propaganda-statement",
+          "name": "anti-modern-slavery",
           "pathname": "/about-us/anti-modern-slavery-and-anti-population-propaganda-statement"
         }
       ]
