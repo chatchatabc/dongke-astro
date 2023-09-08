@@ -431,7 +431,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
                           alt={`Picture of ${automation.name}`}
                         />
                       </div>
-                      <figcaption class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2 text-center">
+                      <figcaption class="absolute bottom-0 w-full bg-black bg-opacity-75 text-white p-2 text-center">
                         <p>{t(automation.name)}</p>
                       </figcaption>
                     </figure>
@@ -441,23 +441,19 @@ const advancedEquipments = advancedEquipmentJson.contents;
             }
           </swiper-container>
 
-          <section
-            class="hidden px-4 absolute z-[1] top-1/2 w-full -translate-y-1/2 justify-between lg:flex"
+          <button
+            data-automation-carousel-prev
+            class="absolute top-1/2 -translate-y-1/2 z-[1] left-2 bg-gray-900 text-white w-12 -rotate-90 h-12 rounded-full transition opacity-50 scale-75 lg:scale-100 hover:opacity-100"
           >
-            <button
-              data-automation-carousel-prev
-              class="bg-gray-900 text-white w-12 -rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
-            >
-              <CaretIcon />
-            </button>
+            <CaretIcon />
+          </button>
 
-            <button
-              data-automation-carousel-next
-              class="bg-gray-900 text-white w-12 rotate-90 h-12 rounded-full transition opacity-50 hover:opacity-100"
-            >
-              <CaretIcon />
-            </button>
-          </section>
+          <button
+            data-automation-carousel-next
+            class="absolute top-1/2 -translate-y-1/2 z-[1] right-2 bg-gray-900 text-white w-12 rotate-90 h-12 rounded-full transition opacity-50 scale-75 lg:scale-100 hover:opacity-100"
+          >
+            <CaretIcon />
+          </button>
         </div>
 
         <figcaption
