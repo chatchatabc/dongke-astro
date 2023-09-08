@@ -500,7 +500,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
     <section class="mt-8 relative">
       <swiper-container init="false" data-equipment-carousel>
         {
-          [...advancedEquipments].map((equipment) => {
+          advancedEquipments.map((equipment) => {
             return (
               <swiper-slide>
                 <Img src={equipment.src} alt={equipment.name} />
@@ -558,14 +558,11 @@ const advancedEquipments = advancedEquipmentJson.contents;
   const equipmentCarousel: { swiper: Swiper; initialize: any } =
     document.querySelector("[data-equipment-carousel]") as any;
   const equipmentCarouselParams: SwiperOptions = {
-    slidesPerView: 2,
-    grid: {
-      rows: 2,
-      fill: "row",
-    },
+    slidesPerView: 1,
     autoplay: {
       delay: 2000,
     },
+    loop: true,
     spaceBetween: 12,
     navigation: {
       nextEl: "[data-equipment-carousel-next]",
@@ -574,20 +571,13 @@ const advancedEquipments = advancedEquipmentJson.contents;
     pagination: true,
     breakpoints: {
       768: {
-        slidesPerView: 3,
+        slidesPerView: 2,
       },
       1024: {
-        slidesPerView: 4,
-        grid: {
-          rows: 1,
-          fill: "row",
-        },
+        slidesPerView: 3,
       },
       1440: {
-        slidesPerView: 5,
-        grid: {
-          rows: 1,
-        },
+        slidesPerView: 4,
       },
     },
   };
