@@ -7,34 +7,34 @@ import { Img } from "astro-imagetools/components";
 changeLanguage("en");
 
 const images = [
-  {
-    name: "01",
-    src: "/images/about-us/certificates/01.jpg",
-  },
-  {
-    name: "02",
-    src: "/images/about-us/certificates/02.jpg",
-  },
-  {
-    name: "03",
-    src: "/images/about-us/certificates/03.jpg",
-  },
-  {
-    name: "04",
-    src: "/images/about-us/certificates/04.jpg",
-  },
-  {
-    name: "05",
-    src: "/images/about-us/certificates/05.jpeg",
-  },
-  {
-    name: "06",
-    src: "/images/about-us/certificates/06.jpeg",
-  },
-  {
-    name: "07",
-    src: "/images/about-us/certificates/07.jpeg",
-  },
+    {
+        name: "01",
+        src: "/images/about-us/certificates/01.jpg",
+    },
+    {
+        name: "02",
+        src: "/images/about-us/certificates/02.jpg",
+    },
+    {
+        name: "03",
+        src: "/images/about-us/certificates/03.jpg",
+    },
+    {
+        name: "04",
+        src: "/images/about-us/certificates/04.jpg",
+    },
+    {
+        name: "05",
+        src: "/images/about-us/certificates/05.jpeg",
+    },
+    {
+        name: "06",
+        src: "/images/about-us/certificates/06.jpeg",
+    },
+    {
+        name: "07",
+        src: "/images/about-us/certificates/07.jpeg",
+    },
 ];
 ---
 
@@ -42,7 +42,7 @@ const images = [
   <AboutUsNavigation />
 
   <section class="container pb-8">
-    <ul class="flex flex-wrap -mx-4 overflow-hidden">
+    <ul class="flex flex-wrap -mx-4 overflow-hidden" data-certificate-gallery>
       {
         images.map((image) => {
           const { src, name } = image;
@@ -67,3 +67,13 @@ const images = [
     </ul>
   </section>
 </InnerLayout>
+
+<script>
+  import "viewerjs/dist/viewer.css";
+  import Viewer from "viewerjs";
+
+  const certificateGalleryEl = document.querySelector<HTMLElement>(
+    "[data-certificate-gallery]"
+  )!;
+  const gallery = new Viewer(certificateGalleryEl);
+</script>

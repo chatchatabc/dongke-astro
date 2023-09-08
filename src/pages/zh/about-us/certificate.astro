@@ -42,7 +42,7 @@ const images = [
   <AboutUsNavigation />
 
   <section class="container pb-8">
-    <ul class="flex flex-wrap -mx-4 overflow-hidden">
+    <ul class="flex flex-wrap -mx-4 overflow-hidden" data-certificate-gallery>
       {
         images.map((image) => {
           const { src, name } = image;
@@ -67,3 +67,13 @@ const images = [
     </ul>
   </section>
 </InnerLayout>
+
+<script>
+  import "viewerjs/dist/viewer.css";
+  import Viewer from "viewerjs";
+
+  const certificateGalleryEl = document.querySelector<HTMLElement>(
+    "[data-certificate-gallery]"
+  )!;
+  const gallery = new Viewer(certificateGalleryEl);
+</script>
