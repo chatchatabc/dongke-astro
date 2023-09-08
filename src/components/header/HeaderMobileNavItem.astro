@@ -28,11 +28,8 @@ const active =
 ---
 
 <header-mobile-nav-item>
-  <div class={`flex items-center ${active ? "text-p" : ""}`}>
-    <a
-      class={`px-4 py-2 block w-full`}
-      href={utilAddLocalePathname({ pathname })}
-    >
+  <div class={`flex items-center px-4 ${active ? "text-p" : ""}`}>
+    <a class={`py-2 block w-full`} href={utilAddLocalePathname({ pathname })}>
       {t(name)}
     </a>
 
