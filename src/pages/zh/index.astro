@@ -15,22 +15,22 @@ const productCategories = productsJson.navlinks;
 const protectionProducts = [
     {
         name: "face-shields",
-        href: "/products/full-face-shields",
+        href: "/products/personal-safety-equipment/face-shields",
         imgSrc: "/images/products/full-face-shields/1.jpeg",
     },
     {
         name: "kids-goggles",
-        href: "/products/kids-goggles",
+        href: "/products/personal-safety-equipment/kids-goggles",
         imgSrc: "/images/products/kids-goggles/kids-goggles-1.jpeg",
     },
     {
         name: "adult-goggles",
-        href: "/products/adult-goggles",
+        href: "/products/personal-safety-equipment/adult-goggles",
         imgSrc: "/images/products/adult-goggles/adult-goggles-1.jpeg",
     },
     {
         name: "kids-face-shields",
-        href: "/products/kids-face-shields",
+        href: "/products/personal-safety-equipment/kids-face-shields",
         imgSrc: "/images/products/face-shields/kids-face-shield-1.jpeg",
     },
 ];
@@ -242,24 +242,35 @@ const advancedEquipments = advancedEquipmentJson.contents;
           {
             protectionProducts.map((product) => {
               const name = t(`${product.name}`);
-
+              const href = utilAddLocalePathname({
+                pathname: product.href,
+              });
               return (
                 <li class="p-2 w-1/2 md:w-1/4">
                   <figure>
                     <div class="shadow-xl">
-                      <Img src={product.imgSrc} alt={`Picture of ${name}`} />
+                      <a href={href}>
+                        <Img src={product.imgSrc} alt={`Picture of ${name}`} />
+                      </a>
                     </div>
 
                     <figcaption class="text-center mt-4">
-                      <p>{name}</p>
+                      <p>
+                        <a class="hover:text-p" href={href}>
+                          {name}
+                        </a>
+                      </p>
 
                       <footer class="mt-2">
-                        <button class="flex px-4 py-0.5 border-gray-400 mx-auto items-center space-x-2 border rounded-md transition hover:text-p">
+                        <a
+                          href={href}
+                          class="flex w-fit px-4 py-0.5 border-gray-400 mx-auto items-center space-x-2 border rounded-md transition hover:text-p"
+                        >
                           <div class="w-5 h-5">
                             <EyeIcon />
                           </div>
                           <span> {t("detail")}</span>
-                        </button>
+                        </a>
                       </footer>
                     </figcaption>
                   </figure>
