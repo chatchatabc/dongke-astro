@@ -27,11 +27,11 @@ astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
   <div
     class={`flex bg-gray-100 transition ${
       astroPathname.startsWith(pathname) ? "text-p bg-white" : ""
-    } hover:bg-white hover:text-p`}
+    }`}
   >
     <a
       href={utilAddLocalePathname({ pathname })}
-      class={`block px-4 py-2  flex-1`}
+      class={`block peer px-4 py-2 flex-1 hover:text-p hover:bg-white`}
     >
       {t(name)}
     </a>
@@ -43,7 +43,7 @@ astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
             astroPathname.startsWith(pathname) ? "rotate-180" : ""
           }`}
         >
-          <div class="w-6 h-6 text-p">
+          <div class="w-6 h-6 text-black peer-hover:text-p">
             <CaretIcon />
           </div>
         </button>
