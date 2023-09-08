@@ -10,36 +10,35 @@ import ContactForm from "@components/ContactForm.astro";
 changeLanguage("en");
 
 export async function getStaticPaths() {
-  const products = productsJson.contents;
-  return products.map((product) => {
-    return {
-      params: {
-        subCategory: product.subCategory[0] ?? "all",
-        slug: product.slug,
-        category: product.category[0],
-      },
-      props: {
-        product,
-      },
-    };
-  });
+    const products = productsJson.contents;
+    return products.map((product) => {
+        return {
+            params: {
+                subCategory: product.subCategory[0] ?? "all",
+                slug: product.slug,
+                category: product.category[0],
+            },
+            props: {
+                product,
+            },
+        };
+    });
 }
 const { subCategory, category } = Astro.params;
 const { product } = Astro.props;
 const navlinks = productsJson.navlinks;
 let productsCollection = await getCollection("products");
 productsCollection = productsCollection.filter((entry) => {
-  return entry.slug.startsWith(`${i18next.language}/${product.slug}`);
+    return entry.slug.startsWith(`${i18next.language}/${product.slug}`);
 });
 const summaryEntry = productsCollection.find((product) => {
-  return product.data.type === "summary";
+    return product.data.type === "summary";
 })!;
 const descriptionEntry = productsCollection.find((product) => {
-  return product.data.type === "description";
+    return product.data.type === "description";
 })!;
 const { Content: SummaryContent } = (await summaryEntry?.render()) ?? {};
-const { Content: DescriptionContent } =
-  (await descriptionEntry?.render()) ?? {};
+const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {};
 ---
 
 <InnerSideLayout

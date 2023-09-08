@@ -50,7 +50,18 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
   <section class="py-4">
     <figure class="flex flex-wrap">
       <div class="border w-full lg:w-1/2">
-        <Img src={product.images[0]} alt={product.slug} />
+        <swiper-container init="false" data-product-carousel>
+          {
+            product.images.map((img: string) => {
+              console.log(img);
+              return (
+                <swiper-slide>
+                  <Img src={img} alt={product.slug} />
+                </swiper-slide>
+              );
+            })
+          }
+        </swiper-container>
       </div>
 
       <figcaption class="mt-2 lg:mt-0 lg:px-4">
@@ -120,6 +131,12 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
 </InnerSideLayout>
 
 <script>
+  import { type SwiperOptions, type Swiper } from "swiper/types";
+  // import function to register Swiper custom elements
+  import { register } from "swiper/element/bundle";
+  // register Swiper custom elements
+  register();
+
   function initalScripts() {
     let activeBtn = "product-desc-btn";
 
@@ -154,6 +171,26 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
       activeBtn = "product-inq-btn";
     });
 
+    const productCarousel: { swiper: Swiper; initialize: any } =
+      document.querySelector("[data-product-carousel]") as any;
+    const productCarouselParams: SwiperOptions = {
+      slidesPerView: 1,
+      loop: true,
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+      pagination: true,
+      navigation: {
+        nextEl: "[data-hero-carousel-next]",
+        prevEl: "[data-hero-carousel-prev]",
+      },
+    };
+
+    // Initialize hero carousel
+    Object.assign(productCarousel, productCarouselParams);
+    productCarousel.initialize();
+
     // Initial toggle
     toggleButton(productDescBtn);
     toggleContainer(productInqContainer);
@@ -172,7 +209,4 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
 
   // Trigger initial scripts on first load
   initalScripts();
-
-  // Trigger initial scripts after page swap
-  document.addEventListener("astro:after-swap", initalScripts);
 </script>
