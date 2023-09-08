@@ -43,7 +43,7 @@ const images = [
   <AboutUsNavigation />
 
   <section class="container py-4 space-y-8">
-    <ul class="flex flex-wrap">
+    <ul class="flex flex-wrap" data-equipment-gallery>
       {
         images.map((image) => {
           const { name, src } = image;
@@ -66,3 +66,13 @@ const images = [
     </ul>
   </section>
 </InnerLayout>
+
+<script>
+  import "viewerjs/dist/viewer.css";
+  import Viewer from "viewerjs";
+
+  const equipmentGallery = document.querySelector<HTMLElement>(
+    "[data-equipment-gallery]"
+  )!;
+  const gallery = new Viewer(equipmentGallery);
+</script>
