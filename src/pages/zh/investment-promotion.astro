@@ -1,11 +1,16 @@
 ---
-import { changeLanguage } from "i18next";
+import { changeLanguage, t } from "i18next";
 import InnerLayout from "@layouts/InnerLayout.astro";
 
 changeLanguage("zh");
+
+console.log(t("banners:investment-promotion"));
 ---
 
-<InnerLayout bannerAlt="investment-promotion" bannerSrc="/images/about-us.jpeg">
+<InnerLayout
+  bannerAlt="investment-promotion"
+  bannerSrc={t("banners:investment-promotion")}
+>
   <h1>Investment Promotion</h1>
   <p>
     The Investment Promotion Department is responsible for the promotion of

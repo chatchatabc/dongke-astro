@@ -44,7 +44,7 @@ const { Content: DescriptionContent } = (await descriptionEntry?.render()) ?? {}
 <InnerSideLayout
   navlinks={navlinks}
   bannerAlt="products"
-  bannerSrc="/images/products.png"
+  bannerSrc={t(`banners:${category}`)}
   subtitle={subCategory === "all" ? category : subCategory}
 >
   <section class="py-4">

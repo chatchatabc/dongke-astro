@@ -1,5 +1,5 @@
 ---
-import { changeLanguage } from "i18next";
+import { changeLanguage, t } from "i18next";
 import AboutUsNavigation from "@components/AboutUsNavigation.astro";
 import InnerLayout from "@layouts/InnerLayout.astro";
 import { utilAddLocalePathname } from "@services/utilService";
@@ -11,7 +11,7 @@ const redirect = utilAddLocalePathname({
 });
 ---
 
-<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
+<InnerLayout bannerSrc={t(`banners:about-us`)} bannerAlt="about-us">
   <AboutUsNavigation />
 
   <div class="mb-8" data-redirect={redirect}></div>

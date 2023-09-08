@@ -1,12 +1,12 @@
 ---
-import { changeLanguage } from "i18next";
+import { changeLanguage, t } from "i18next";
 import AboutUsNavigation from "@components/AboutUsNavigation.astro";
 import InnerLayout from "@layouts/InnerLayout.astro";
 
 changeLanguage("zh");
 ---
 
-<InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
+<InnerLayout bannerSrc={t(`banners:about-us`)} bannerAlt="about-us">
   <AboutUsNavigation />
 
   <section class="container pb-8 text-gray-500 space-y-24">

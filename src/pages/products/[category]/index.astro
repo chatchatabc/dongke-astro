@@ -39,7 +39,7 @@ const { category } = Astro.params;
 <InnerSideLayout
   navlinks={productsJson.navlinks}
   bannerAlt="products"
-  bannerSrc="/images/products.png"
+  bannerSrc={t(`banners:${category}`)}
   subtitle={category}
 >
   <ul class="flex flex-wrap -mx-2 overflow-hidden">

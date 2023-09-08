@@ -3,7 +3,7 @@ import InnerSideLayout from "@layouts/InnerSideLayout.astro";
 import { utilAddLocalePathname } from "@services/utilService";
 import { getCollection } from "astro:content";
 import { Img } from "astro-imagetools/components";
-import i18next, { changeLanguage } from "i18next";
+import i18next, { changeLanguage, t } from "i18next";
 
 changeLanguage("zh");
 
@@ -42,7 +42,7 @@ newsCollection = newsCollection.filter((news) => {
 
 <InnerSideLayout
   navlinks={navlinks}
-  bannerSrc="/images/news.jpeg"
+  bannerSrc={t(`banners:news`)}
   bannerAlt="news"
   subtitle={type}
 >

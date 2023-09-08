@@ -1,7 +1,7 @@
 ---
 import InnerSideLayout from "@layouts/InnerSideLayout.astro";
 import { getCollection, getEntry } from "astro:content";
-import i18next, { changeLanguage } from "i18next";
+import i18next, { changeLanguage, t } from "i18next";
 
 changeLanguage("en");
 
@@ -36,7 +36,7 @@ const date = new Date(timestamp);
 
 <InnerSideLayout
   bannerAlt="news"
-  bannerSrc="/images/news.jpeg"
+  bannerSrc={t(`banners:news`)}
   navlinks={navlinks}
 >
   <header class="text-center pt-2 pb-8 border-b">
