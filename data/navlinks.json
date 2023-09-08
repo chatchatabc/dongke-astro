@@ -6,7 +6,34 @@
     },
     {
       "name": "about-us",
-      "pathname": "/about-us"
+      "pathname": "/about-us",
+      "children": [
+        {
+          "name": "company-profile",
+          "pathname": "/about-us/company-profile"
+        },
+        {
+          "name": "production-workshop",
+          "pathname": "/about-us/production-workshop"
+        },
+        {
+          "name": "advanced-equipment",
+          "pathname": "/about-us/advanced-equipment"
+        },
+        {
+          "name": "certificate",
+          "pathname": "/about-us/certificate"
+        },
+        {
+          "name": "company-history",
+          "pathname": "/about-us/company-history"
+        },
+
+        {
+          "name": "anti-modern-slavery-and-anti-population-propaganda-statement",
+          "pathname": "/about-us/anti-modern-slavery-and-anti-population-propaganda-statement"
+        }
+      ]
     },
     {
       "name": "products",
