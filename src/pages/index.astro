@@ -418,16 +418,23 @@ const advancedEquipments = advancedEquipmentJson.contents;
 
     <section class="mt-8">
       <figure class="flex flex-wrap">
-        <div class="w-full relative lg:w-1/2">
+        <div class="w-full relative shadow-xl self-start lg:w-1/2">
           <swiper-container init="false" data-automation-carousel>
             {
               automations.map((automation) => {
                 return (
                   <swiper-slide>
-                    <Img
-                      src={automation.imgSrc}
-                      alt={`Picture of ${automation.name}`}
-                    />
+                    <figure class="relative">
+                      <div>
+                        <Img
+                          src={automation.imgSrc}
+                          alt={`Picture of ${automation.name}`}
+                        />
+                      </div>
+                      <figcaption class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2 text-center">
+                        <p>{t(automation.name)}</p>
+                      </figcaption>
+                    </figure>
                   </swiper-slide>
                 );
               })
@@ -464,7 +471,7 @@ const advancedEquipments = advancedEquipmentJson.contents;
             {
               automations.map((automation) => {
                 return (
-                  <li>
+                  <li class="shadow-xl">
                     <figure class="px-4 py-2 border-2 flex space-x-4 items-center">
                       <div class="rounded-full flex items-center justify-center text-white bg-p w-16 h-16">
                         <p class="font-bold">{t(automation.name)}</p>
@@ -590,7 +597,6 @@ const advancedEquipments = advancedEquipmentJson.contents;
       delay: 2000,
     },
     loop: true,
-    pagination: true,
     navigation: {
       nextEl: "[data-automation-carousel-next]",
       prevEl: "[data-automation-carousel-prev]",
