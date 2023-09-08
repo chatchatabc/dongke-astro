@@ -327,7 +327,11 @@ const advancedEquipments = advancedEquipmentJson.contents;
     </header>
 
     <section class="my-8">
-      <swiper-container init="false" data-certificate-carousel>
+      <swiper-container
+        init="false"
+        data-certificate-carousel
+        data-certificate-gallery
+      >
         {
           certificates.map((cert) => {
             return (
@@ -660,4 +664,14 @@ const advancedEquipments = advancedEquipmentJson.contents;
   // Initialize category carousel
   Object.assign(categoryCarousel, categoryCarouselParams);
   categoryCarousel.initialize();
+</script>
+
+<script>
+  import "viewerjs/dist/viewer.css";
+  import Viewer from "viewerjs";
+
+  const certificateGalleryEl = document.querySelector<HTMLElement>(
+    "[data-certificate-gallery]"
+  )!;
+  const gallery = new Viewer(certificateGalleryEl);
 </script>
