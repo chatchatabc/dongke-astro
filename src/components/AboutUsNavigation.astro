@@ -24,7 +24,7 @@ const navlinks = [
     pathname: "/about-us/company-history",
   },
   {
-    name: "anti-modern-slavery-and-anti-population-propaganda-statement",
+    name: "anti-modern-slavery",
     pathname:
       "/about-us/anti-modern-slavery-and-anti-population-propaganda-statement",
   },
@@ -35,12 +35,12 @@ const { pathname: astroPathname } = Astro.url;
 
 <section class="container mt-8">
   <nav class="border-b">
-    <ul class="flex flex-wrap space-x-4 px-16 justify-center">
+    <ul class="flex flex-wrap justify-center lg:px-16">
       {
         navlinks.map((navlink) => {
           const { name, pathname } = navlink;
           return (
-            <li>
+            <li class="p-1 lg:py-0">
               <a
                 href={utilAddLocalePathname({ pathname })}
                 class={`block px-4 py-2 border transition ${
