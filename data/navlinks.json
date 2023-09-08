@@ -6,7 +6,7 @@
     },
     {
       "name": "about-us",
-      "pathname": "/about-us",
+      "pathname": "/about-us/company-profile",
       "children": [
         {
           "name": "company-profile",
