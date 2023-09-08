@@ -10,7 +10,25 @@
     },
     {
       "name": "products",
-      "pathname": "/products"
+      "pathname": "/products",
+      "children": [
+        {
+          "name": "custom-packaging",
+          "pathname": "/products/custom-packaging"
+        },
+        {
+          "name": "personal-safety-equipment",
+          "pathname": "/products/personal-safety-equipment"
+        },
+        {
+          "name": "food-and-catering-packaging",
+          "pathname": "/products/food-and-catering-packaging"
+        },
+        {
+          "name": "school-and-office-supplies",
+          "pathname": "/products/school-and-office-supplies"
+        }
+      ]
     },
     {
       "name": "production-capacity",
@@ -18,7 +36,17 @@
     },
     {
       "name": "news",
-      "pathname": "/news"
+      "pathname": "/news",
+      "children": [
+        {
+          "name": "company-news",
+          "pathname": "/news/company-news"
+        },
+        {
+          "name": "industry-information",
+          "pathname": "/news/industry-information"
+        }
+      ]
     },
     {
       "name": "investment-promotion",
