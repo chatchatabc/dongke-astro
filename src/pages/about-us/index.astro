@@ -2,16 +2,25 @@
 import { changeLanguage } from "i18next";
 import AboutUsNavigation from "@components/AboutUsNavigation.astro";
 import InnerLayout from "@layouts/InnerLayout.astro";
+import { utilAddLocalePathname } from "@services/utilService";
 
 changeLanguage("en");
+
+const redirect = utilAddLocalePathname({
+    pathname: "/about-us/company-profile",
+});
 ---
 
 <InnerLayout bannerSrc="/images/about-us.jpeg" bannerAlt="about-us">
   <AboutUsNavigation />
 
-  <div class="mb-8"></div>
+  <div class="mb-8" data-redirect={redirect}></div>
 </InnerLayout>
 
 <script>
-  window.location.href = "/about-us/company-profile";
+  const redirect =
+    document.querySelector<HTMLElement>("[data-redirect]")!.dataset.redirect ||
+    "/";
+
+  window.location.href = redirect;
 </script>
