@@ -10,6 +10,7 @@ import { Picture } from "astro-imagetools/components";
 import i18next, { t } from "i18next";
 import navlinksJson from "@data/navlinks.json";
 import LanguageIcon from "@assets/LanguageIcon.astro";
+import HeaderMobileNavItem from "./HeaderMobileNavItem.astro";
 
 const navlinks = navlinksJson.contents;
 let { pathname: astroPathname } = Astro.url;
@@ -70,23 +71,12 @@ astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
       data-mobile-nav
       class="fixed flex flex-col translate-x-full opacity-0 pointer-events-none transition duration-300 w-full left-0 bg-black text-white lg:hidden"
     >
-      <ul class="divide-y">
+      <ul class="divide-y overflow-scroll">
         {
           navlinks.map((navlink) => {
-            const { pathname, name } = navlink;
             return (
               <li>
-                <a
-                  class={`px-4 py-2 block w-full ${
-                    (astroPathname.startsWith(pathname) && pathname !== "/") ||
-                    astroPathname === pathname
-                      ? "text-p"
-                      : ""
-                  }`}
-                  href={utilAddLocalePathname({ pathname })}
-                >
-                  {t(name)}
-                </a>
+                <HeaderMobileNavItem navlink={navlink} />
               </li>
             );
           })

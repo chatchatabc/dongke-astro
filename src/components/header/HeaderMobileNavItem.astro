@@ -1,0 +1,101 @@
+---
+import CaretIcon from "@assets/CaretIcon.astro";
+import {
+  utilAddLocalePathname,
+  utilRemoveLocalePathname,
+} from "@services/utilService";
+import { t } from "i18next";
+
+type NavLink = {
+  pathname: string;
+  name: string;
+};
+type Props = {
+  navlink: NavLink & {
+    children?: NavLink[];
+  };
+};
+
+const { navlink } = Astro.props as Props;
+const { pathname, name, children } = navlink;
+
+let { pathname: astroPathname } = Astro.url;
+astroPathname = utilRemoveLocalePathname({ pathname: astroPathname });
+
+const active =
+  (astroPathname.startsWith(pathname) && pathname !== "/") ||
+  astroPathname === pathname;
+---
+
+<header-mobile-nav-item>
+  <div class={`flex items-center ${active ? "text-p" : ""}`}>
+    <a
+      class={`px-4 py-2 block w-full`}
+      href={utilAddLocalePathname({ pathname })}
+    >
+      {t(name)}
+    </a>
+
+    {
+      children && (
+        <button
+          class={`w-8 h-8 transition ${active ? "rotate-180" : ""}`}
+          aria-label="Toggle Submenu"
+          aria-expanded={active}
+        >
+          <CaretIcon />
+        </button>
+      )
+    }
+  </div>
+
+  {
+    children && (
+      <div
+        data-mobile-header-nav-children
+        class={`grid transition-all ${
+          active ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <ul class="divide-y overflow-hidden">
+          {children.map((child) => {
+            const { pathname, name } = child;
+            return (
+              <li>
+                <a
+                  class={`pr-4 pl-8 py-2 block w-full ${
+                    astroPathname.startsWith(pathname) ? "text-p" : ""
+                  } bg-white bg-opacity-20`}
+                  href={utilAddLocalePathname({ pathname })}
+                >
+                  {t(name)}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    )
+  }
+</header-mobile-nav-item>
+
+<script>
+  class HeaderMobileNavItem extends HTMLElement {
+    constructor() {
+      super();
+
+      const button = this.querySelector("button");
+      const navChildren = this.querySelector(
+        "[data-mobile-header-nav-children]"
+      );
+
+      button?.addEventListener("click", () => {
+        navChildren?.classList.toggle("grid-rows-[0fr]");
+        navChildren?.classList.toggle("grid-rows-[1fr]");
+        button?.classList.toggle("rotate-180");
+      });
+    }
+  }
+
+  customElements.define("header-mobile-nav-item", HeaderMobileNavItem);
+</script>
